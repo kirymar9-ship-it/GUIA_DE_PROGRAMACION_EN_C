@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 1: Mi primer código</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="practica.css">
+    <style>
+        .guia-rapida {
+            background-color: #f0f7ff;
+            border-left: 5px solid #2196f3;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: left;
+            font-size: 0.9em;
+            border-radius: 8px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            font-family: 'Consolas', monospace;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            margin-top: 10px;
+            resize: none;
+        }
+        .resultado {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+            font-weight: bold;
+        }
+        .success { background-color: #c2f0c2; color: #1e5631; display: block; }
+        .error { background-color: #ffd8a8; color: #874100; display: block; }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <div class="badge-practica">Nivel 1: Salida de Datos</div>
+        <h2>¡Haz que el computador hable!</h2>
+
+        <div class="guia-rapida">
+            <strong>💡 Refresca tu memoria:</strong><br>
+            Todo programa en C necesita: <br>
+            <code>#include &lt;stdio.h&gt;</code> (La librería)<br>
+            <code>int main() { ... }</code> (El cuerpo)<br>
+            <code>printf("Texto");</code> (Para mostrar mensajes)
+        </div>
+
+        <p><strong>RETO:</strong> Escribe el código necesario para mostrar en pantalla el mensaje: <br> 
+           <code style="background:#eee; padding:2px 5px;">Hola Mundo</code></p>
+
+        <textarea id="userCode" placeholder="Escribe tu código aquí..."></textarea>
+
+        <div id="feedback" class="resultado"></div>
+
+        <div style="display: flex; gap: 10px; margin-top: 20px; justify-content: center;">
+            <a href="practica.html" class="btn btn-prev">Volver</a>
+            <button class="btn btn-next" onclick="verificarCodigo()">Verificar Código</button>
+        </div>
+    </div>
+
+    <script>
+        function verificarCodigo() {
+            const code = document.getElementById("userCode").value.trim();
+            const feedback = document.getElementById("feedback");
+
+            // Limpiamos espacios y saltos de línea para comparar más fácil
+            const simplifiedCode = code.replace(/\s+/g, '');
+            
+            // La respuesta correcta simplificada para comparar
+            const correctSolution = '#include<stdio.h>intmain(){printf("HolaMundo");return0;}';
+
+            if (simplifiedCode === correctSolution) {
+                feedback.innerHTML = "¡EXCELENTE! 🎉 Lo has escrito perfectamente. Has asimilado la estructura básica.";
+                feedback.className = "resultado success";
+            } else {
+                // Pistas básicas si falla
+                if (!code.includes("printf")) {
+                    feedback.innerHTML = "❌ Te falta la función 'printf' para mostrar el mensaje.";
+                } else if (!code.includes(";")) {
+                    feedback.innerHTML = "❌ ¡Cuidado! Revisa si te faltó el punto y coma (;) al final de la instrucción.";
+                } else if (!code.includes("#include")) {
+                    feedback.innerHTML = "❌ Recuerda incluir la librería <stdio.h> al principio.";
+                } else {
+                    feedback.innerHTML = "❌ Hay un error en la estructura. Revisa la guía rápida de arriba e inténtalo de nuevo.";
+                }
+                feedback.className = "resultado error";
+            }
+        }
+    </script>
+</body>
+</html>

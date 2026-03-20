@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Quiz Nivel 1</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="card-container" id="quiz">
+
+<div class="lvl-1" style="display:inline-block; padding:5px 15px; border-radius:10px; font-weight:bold;">
+Quiz 1
+</div>
+
+<h2 id="pregunta"></h2>
+
+<div id="opciones"></div>
+
+</div>
+
+<script>
+
+let preguntas = [
+
+{
+pregunta: "¿Qué es un lenguaje de programación?",
+opciones: [
+{texto:"Un medio para dar instrucciones a una computadora", correcta:true},
+{texto:"Un sistema operativo", correcta:false},
+{texto:"Un programa de limpieza de archivos", correcta:false}
+]
+},
+
+{
+pregunta: "¿Qué representa el lenguaje de máquina?",
+opciones: [
+{texto:"Un sistema de cáracteres con el que la computadora se expresa", correcta:false},
+{texto:"Programas almacenados en la CPU", correcta:false},
+{texto:"Secuencias de 0 y 1 que la CPU puede ejecutar", correcta:true}
+]
+},
+
+{
+pregunta: "¿Quién puede entender directamente el lenguaje de máquina?",
+opciones: [
+{texto:"El procesador (CPU)", correcta:true},
+{texto:"El teclado", correcta:false},
+{texto:"El monitor", correcta:false}
+]
+},
+
+{
+pregunta: "¿Qué hace un compilador?",
+opciones: [
+{texto:"Diseña interfaces gráficas", correcta:false},
+{texto:"Ejecuta programas en internet", correcta:false},
+{texto:"Traduce el código fuente a lenguaje de máquina", correcta:true}
+]
+},
+
+{
+pregunta: "¿Qué caracteriza a un compilador?",
+opciones: [
+{texto:"Traduce todo el programa antes de ejecutarlo", correcta:true},
+{texto:"Solo traduce números", correcta:false},
+{texto:"Solo funciona en internet", correcta:false}
+]
+},
+
+{
+pregunta: "¿Qué es un algoritmo?",
+opciones: [
+{texto:"Un tipo de hardware", correcta:false},
+{texto:"Un virus informático", correcta:false},
+{texto:"Un conjunto ordenado de pasos para resolver un problema", correcta:true}
+]
+},
+
+{
+pregunta: "¿Para qué se utilizan los algoritmos?",
+opciones: [
+{texto:"Para decorar el código", correcta:false},
+{texto:"Para organizar los pasos necesarios para resolver un problema", correcta:true},
+{texto:"Para cambiar el sistema operativo", correcta:false}
+]
+},
+
+{
+pregunta: "¿Qué es el lenguaje C?",
+opciones: [
+{texto:"Un tipo de computadora", correcta:false},
+{texto:"Un lenguaje de programación", correcta:true},
+{texto:"Un antivirus", correcta:false}
+]
+},
+
+{
+pregunta: "¿Quién creó el lenguaje C?",
+opciones: [
+{texto:"Steve Jobs", correcta:false},
+{texto:"Bill Gates", correcta:false},
+{texto:"Dennis Ritchie", correcta:true}
+]
+}
+
+];
+
+let preguntaActual = 0;
+let puntos = 0;
+
+function cargarPregunta(){
+
+let p = preguntas[preguntaActual];
+
+document.getElementById("pregunta").innerText = p.pregunta;
+
+let opcionesHTML = "";
+
+p.opciones.forEach(op => {
+
+opcionesHTML += `
+<button class="option-btn" onclick="verificar(this, ${op.correcta})">
+${op.texto}
+</button>
+`;
+
+});
+
+document.getElementById("opciones").innerHTML = opcionesHTML;
+
+}
+
+function verificar(btn, esCorrecto){
+
+if(esCorrecto){
+btn.classList.add("correct");
+puntos++;
+}else{
+btn.classList.add("wrong");
+}
+
+document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
+
+setTimeout(() => {
+
+preguntaActual++;
+
+if(preguntaActual < preguntas.length){
+cargarPregunta();
+}else{
+mostrarFinal();
+}
+
+},1000);
+
+}
+
+function mostrarFinal(){
+
+let total = preguntas.length;
+let aciertos = puntos;
+let errores = total - aciertos;
+
+const porc = (aciertos / total) * 100;
+
+let feedback = "";
+
+if(porc < 50)
+feedback = "Tu capacidad de retención es deficiente, necesitas esforzarte más. ¡Repasa lo que fallaste!";
+
+else if(porc < 75)
+feedback = "Tu capacidad de retención es buena, pero repasar más te ayudará.";
+
+else if(porc < 90)
+feedback = "¡Excelente! Has retenido gran parte de la lección. Continúa con la siguiente lección.";
+
+else
+feedback = "¡Tu capacidad de retención es sobresaliente! Dominas el tema. Puedes avanzar a la siguiente clase";
+
+document.getElementById("quiz").innerHTML = `
+<h1>Resultado</h1>
+<p>Aciertos: ${aciertos}/${total}</p>
+<p>Errores: ${errores}</p>
+<p>Porcentaje: ${porc.toFixed(0)}%</p>
+<p><em>"${feedback}"</em></p>
+<a href="index.html" class="btn btn-next">Volver al Inicio</a>
+`;
+
+}
+cargarPregunta();
+
+</script>
+</body>
+</html>
