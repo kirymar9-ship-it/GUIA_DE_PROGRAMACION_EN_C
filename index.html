@@ -2,28 +2,35 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aprende C - Inicio</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Estilo rápido para ubicar el botón de práctica arriba a la derecha */
         .top-nav {
             position: absolute;
             top: 20px;
             right: 20px;
         }
+        /* Ajuste para que el botón de práctica no tape el título en móviles muy pequeños */
+        @media (max-width: 400px) {
+            .top-nav {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin-bottom: 20px;
+                text-align: right;
+            }
+        }
         .btn-practica {
             background-color: #1A3A5F;
             color: white;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 20px;
             text-decoration: none;
+            font-size: 0.85em;
             font-weight: bold;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: 0.3s;
-        }
-        .btn-practica:hover {
-            background-color: #2a5a8f;
-            transform: scale(1.05);
         }
     </style>
 </head>
@@ -36,30 +43,18 @@
 
 <div class="card-container">
 
-    <h1 style="color:#1A3A5F;">𓍢 Aprende Programación desde cero 𓍢</h1>
+    <h1 style="color:#1A3A5F; font-size: 1.6em;">𓍢 Aprende Programación desde cero 𓍢</h1>
 
     <p style="color:var(--subtitle); margin-bottom:30px;">
         Tu guía básica para iniciar en programación
     </p>
 
     <div style="display:flex; flex-direction:column;">
-
         <a href="nivel1.html" class="btn lvl-btn lvl-1">Nivel 1: Fundamentos de C</a>
-
         <a href="nivel2.html" class="btn lvl-btn lvl-2">Nivel 2: Creación de Algoritmos</a>
-
-        <button class="btn lvl-btn lvl-3" disabled>
-            Nivel 3: Estructuras de Datos (Próximamente)
-        </button>
-
-        <button class="btn lvl-btn lvl-4" disabled>
-            Nivel 4: Gestión de Memoria (Próximamente)
-        </button>
-
-        <button class="btn lvl-btn lvl-5" disabled>
-            Nivel 5: Proyectos Finales (Próximamente)
-        </button>
-
+        <button class="btn lvl-btn lvl-3" disabled>Nivel 3: Estructuras de Datos (Próximamente)</button>
+        <button class="btn lvl-btn lvl-4" disabled>Nivel 4: Gestión de Memoria (Próximamente)</button>
+        <button class="btn lvl-btn lvl-5" disabled>Nivel 5: Proyectos Finales (Próximamente)</button>
     </div>
 
 </div>
