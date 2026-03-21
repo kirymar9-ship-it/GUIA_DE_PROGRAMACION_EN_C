@@ -6,26 +6,33 @@
     <title>Nivel 2 - Tutorial Algoritmos</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* 1. Mantenemos la barrita desplazadora y quitamos el fondo blanco molesto */
+        /* Ajuste de tamaño para móviles */
+        @media (max-width: 600px) {
+            .card-container {
+                width: 95% !important; /* Aprovecha más espacio lateral */
+                padding: 15px !important;
+                font-size: 1.1rem; /* Texto un poco más grande para leer mejor */
+            }
+            h3 { font-size: 1.4rem; }
+        }
+
         pre {
-            background: transparent !important; /* Evita el cuadro blanco en móviles */
-            overflow-x: auto; /* Muestra la barra de desplazamiento horizontal */
+            background: transparent !important; 
+            overflow-x: auto; /* Tu barrita de desplazamiento */
             width: 100%;
             margin: 0;
             padding: 0;
         }
 
-        /* 2. Aseguramos que el contenido interno se adapte al ancho del teléfono */
         code {
             display: block;
             width: 100%;
             color: inherit;
         }
 
-        /* 3. Ajuste para que el cuadro de la Lección 3 no se rompa en el móvil */
         .card {
             max-width: 100%;
-            box-sizing: border-box; /* Evita que el padding lo ensanche de más */
+            box-sizing: border-box;
         }
     </style>
 </head>
