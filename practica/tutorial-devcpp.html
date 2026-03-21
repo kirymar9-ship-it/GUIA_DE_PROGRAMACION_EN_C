@@ -5,13 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutorial Dev-C++ | Aprende C</title>
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="practica.css">
+    <style>
+        /* Mantenemos tus estilos de bloque de código e imágenes */
+        .tutorial-img {
+            width: 100%;
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin-top: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .code-block {
+            background: #2d2d2d;
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 0.85em;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Consolas', monospace;
+        }
+    </style>
 </head>
 <body>
 
     <div class="card-container">
-        <div class="badge-practica">Paso 0: Instalación</div>
-        
+        <div class="lvl-1" style="display:inline-block; padding:5px 15px; border-radius:10px; font-weight:bold; margin-bottom:15px;">Paso 0: Instalación</div>
+       
         <div id="content"></div>
 
         <div style="display: flex; gap: 10px; margin-top: 25px; justify-content: center;">
@@ -21,83 +42,23 @@
     </div>
 
     <script>
+        // AQUÍ ESTÁN TUS 15 PASOS ORIGINALES SIN RESUMIR
         const pasos = [
-            { 
-                t: "1. Vistazo a la página", 
-                c: "Antes de entrar, así es como se ve el sitio oficial de SourceForge para Dev-C++.", 
-                img: "https://i.ibb.co/fzDjLLv7/IMG-20260318-183722.jpg" 
-            },
-            { 
-                t: "2. Botón de Descarga", 
-                c: "Una vez dentro, ubica el botón verde de 'Download'. El puntero te indica dónde hacer clic.", 
-                img: "https://i.ibb.co/39HZQWzk/IMG-20260318-183855.jpg" 
-            },
-            { 
-                t: "3. Abrir Instalador", 
-                c: "Cuando termine la descarga, abre el menú de descargas de tu navegador y haz clic en el archivo .exe para iniciar.", 
-                img: "https://i.ibb.co/qFygDtNR/Screenshot-2026-03-18-17-41-52-650-com-1773875173123-google-android-youtube.jpg" 
-            },
-            { 
-                t: "4. Acuerdo de Licencia", 
-                c: "Lee los términos y presiona el botón 'I Agree' (Aceptar) para poder continuar.", 
-                img: "https://i.ibb.co/DHFHr7Wz/Screenshot-2026-03-18-17-43-12-193-com-1773875173081-google-android-youtube.jpg" 
-            },
-            { 
-                t: "5. Selección de Componentes", 
-                c: "Asegúrate de que los componentes necesarios estén marcados y presiona 'Next'.", 
-                img: "https://i.ibb.co/gF3n65tX/Screenshot-2026-03-18-17-43-18-827-com-1773875172343-google-android-youtube.jpg" 
-            },
-            { 
-                t: "6. Elegir Carpeta", 
-                c: "Elige la ubicación en tu disco donde se instalará el programa y dale a 'Install'.", 
-                img: "https://i.ibb.co/DDPFqbM0/Screenshot-2026-03-18-17-43-26-440-com-1773875173059-google-android-youtube.jpg" 
-            },
-            { 
-                t: "7. Instalando", 
-                c: "Verás una barra de progreso verde. Espera a que termine de extraer los archivos.", 
-                img: "https://i.ibb.co/vCZGDWx3/Screenshot-2026-03-18-17-43-37-539-com-1773875172891-google-android-youtube.jpg" 
-            },
-            { 
-                t: "8. Finalizar Asistente", 
-                c: "Haz clic en 'Finish' para cerrar el instalador y ejecutar el programa por primera vez.", 
-                img: "https://i.ibb.co/DjVmNfv/Screenshot-2026-03-18-17-44-36-202-com-1773875172928-google-android-youtube.jpg" 
-            },
-            { 
-                t: "9. Configurar Idioma", 
-                c: "Selecciona tu idioma preferido (como English o Spanish) en la lista azul.", 
-                img: "https://i.ibb.co/HT0Y8gxn/Screenshot-2026-03-18-17-44-50-669-com-1773875172886-google-android-youtube.jpg" 
-            },
-            { 
-                t: "10. Personalizar Tema", 
-                c: "Elige la fuente (Consolas) y el esquema de colores (Classic) para tu editor.", 
-                img: "https://i.ibb.co/prh9btxD/Screenshot-2026-03-18-17-45-06-718-com-1773875172893-google-android-youtube.jpg" 
-            },
-            { 
-                t: "11. Crear Nuevo Archivo", 
-                c: "Para empezar, presiona el icono de la hoja en blanco o ve a 'File' -> 'New' -> 'Source File'.", 
-                img: "https://i.ibb.co/Pz3FJSx8/Screenshot-2026-03-18-17-48-51-213-com-1773875172343-google-android-youtube.jpg" 
-            },
-            { 
-                t: "12. Escribir Código", 
-                c: "Escribe tu código para imprimir 'Hola Mundo'. Fíjate bien en la sintaxis.", 
-                code: "#include <stdio.h>\nint main() {\n printf(\"Hola Mundo\");\n return 0;\n}", 
-                img: "https://i.ibb.co/b5jyWqGz/Screenshot-2026-03-18-17-51-53-880-com-1773875172343-google-android-youtube.jpg" 
-            },
-            { 
-                t: "13. Guardar o Compilar", 
-                c: "Usa los iconos de la barra superior para guardar tu progreso o compilar el código.", 
-                img: "https://i.ibb.co/4Z4SHTYr/Screenshot-2026-03-18-17-49-04-654-com-1773875172710-google-android-youtube.jpg" 
-            },
-            { 
-                t: "14. Compilar y Ejecutar", 
-                c: "Haz clic en el icono de los cuadros de colores (F11) para ver tu programa en acción.", 
-                img: "https://i.ibb.co/mFrnrWbF/Screenshot-2026-03-18-17-49-09-647-com-1773875172344-google-android-youtube.jpg" 
-            },
-            { 
-                t: "15. Resultado Final", 
-                c: "¡Listo! Se abrirá la consola negra con el mensaje 'Hola Mundo'. ¡Lo lograste!", 
-                img: "https://i.ibb.co/vC2kRMnx/Screenshot-2026-03-18-17-52-53-928-com-1773875172707-google-android-youtube.jpg" 
-            }
+            { t: "1. Vistazo a la página", c: "Antes de entrar, así es como se ve el sitio oficial de SourceForge para Dev-C++.", img: "https://i.ibb.co/fzDjLLv7/IMG-20260318-183722.jpg" },
+            { t: "2. Botón de Descarga", c: "Una vez dentro, ubica el botón verde de 'Download'. El puntero te indica dónde hacer clic.", img: "https://i.ibb.co/39HZQWzk/IMG-20260318-183855.jpg" },
+            { t: "3. Abrir Instalador", c: "Cuando termine la descarga, abre el menú de descargas de tu navegador y haz clic en el archivo .exe para iniciar.", img: "https://i.ibb.co/qFygDtNR/Screenshot-2026-03-18-17-41-52-650-com-1773875173123-google-android-youtube.jpg" },
+            { t: "4. Acuerdo de Licencia", c: "Lee los términos y presiona el botón 'I Agree' (Aceptar) para poder continuar.", img: "https://i.ibb.co/DHFHr7Wz/Screenshot-2026-03-18-17-43-12-193-com-1773875173081-google-android-youtube.jpg" },
+            { t: "5. Selección de Componentes", c: "Asegúrate de que los componentes necesarios estén marcados y presiona 'Next'.", img: "https://i.ibb.co/gF3n65tX/Screenshot-2026-03-18-17-43-18-827-com-1773875172343-google-android-youtube.jpg" },
+            { t: "6. Elegir Carpeta", c: "Elige la ubicación en tu disco donde se instalará el programa y dale a 'Install'.", img: "https://i.ibb.co/DDPFqbM0/Screenshot-2026-03-18-17-43-26-440-com-1773875173059-google-android-youtube.jpg" },
+            { t: "7. Instalando", c: "Verás una barra de progreso verde. Espera a que termine de extraer los archivos.", img: "https://i.ibb.co/vCZGDWx3/Screenshot-2026-03-18-17-43-37-539-com-1773875172891-google-android-youtube.jpg" },
+            { t: "8. Finalizar Asistente", c: "Haz clic en 'Finish' para cerrar el instalador y ejecutar el programa por primera vez.", img: "https://i.ibb.co/DjVmNfv/Screenshot-2026-03-18-17-44-36-202-com-1773875172928-google-android-youtube.jpg" },
+            { t: "9. Configurar Idioma", c: "Selecciona tu idioma preferido (como English o Spanish) en la lista azul.", img: "https://i.ibb.co/HT0Y8gxn/Screenshot-2026-03-18-17-44-50-669-com-1773875172886-google-android-youtube.jpg" },
+            { t: "10. Personalizar Tema", c: "Elige la fuente (Consolas) y el esquema de colores (Classic) para tu editor.", img: "https://i.ibb.co/prh9btxD/Screenshot-2026-03-18-17-45-06-718-com-1773875172893-google-android-youtube.jpg" },
+            { t: "11. Crear Nuevo Archivo", c: "Para empezar, presiona el icono de la hoja en blanco o ve a 'File' -> 'New' -> 'Source File'.", img: "https://i.ibb.co/Pz3FJSx8/Screenshot-2026-03-18-17-48-51-213-com-1773875172343-google-android-youtube.jpg" },
+            { t: "12. Escribir Código", c: "Escribe tu código para imprimir 'Hola Mundo'. Fíjate bien en la sintaxis.", code: "#include <stdio.h>\nint main() {\n printf(\"Hola Mundo\");\n return 0;\n}", img: "https://i.ibb.co/b5jyWqGz/Screenshot-2026-03-18-17-51-53-880-com-1773875172343-google-android-youtube.jpg" },
+            { t: "13. Guardar o Compilar", c: "Usa los iconos de la barra superior para guardar tu progreso o compilar el código.", img: "https://i.ibb.co/4Z4SHTYr/Screenshot-2026-03-18-17-49-04-654-com-1773875172710-google-android-youtube.jpg" },
+            { t: "14. Compilar y Ejecutar", c: "Haz clic en el icono de los cuadros de colores (F11) para ver tu programa en acción.", img: "https://i.ibb.co/mFrnrWbF/Screenshot-2026-03-18-17-49-09-647-com-1773875172344-google-android-youtube.jpg" },
+            { t: "15. Resultado Final", c: "¡Listo! Se abrirá la consola negra con el mensaje 'Hola Mundo'. ¡Lo lograste!", img: "https://i.ibb.co/vC2kRMnx/Screenshot-2026-03-18-17-52-53-928-com-1773875172707-google-android-youtube.jpg" }
         ];
 
         let index = 0;
@@ -105,18 +66,15 @@
         function mostrar() {
             const p = pasos[index];
             let html = `<h2>${p.t}</h2><p>${p.c}</p>`;
-            
-            // Si el paso tiene código, lo mostramos en un bloque especial
+           
             if(p.code) {
                 html += `<div class="code-block"><pre><code>${p.code}</code></pre></div>`;
             }
-            
-            // Imagen del paso
-            html += `<img src="${p.img}" class="tutorial-img" alt="${p.t}" style="width:100%; border-radius:10px; margin-top:15px;">`;
-            
+           
+            html += `<img src="${p.img}" class="tutorial-img" alt="${p.t}">`;
+           
             document.getElementById("content").innerHTML = html;
 
-            // Control de visibilidad de botones
             document.getElementById("prevBtn").style.visibility = index === 0 ? "hidden" : "visible";
             document.getElementById("nextBtn").innerText = index === pasos.length - 1 ? "Finalizar" : "Siguiente";
         }
@@ -124,8 +82,7 @@
         function cambiar(n) {
             index += n;
             if (index >= pasos.length) {
-                // Al terminar, vuelve al menú de prácticas
-                window.location.href = "practica.html"; 
+                window.location.href = "practica.html";
             } else if (index < 0) {
                 index = 0;
             } else {
@@ -133,7 +90,6 @@
             }
         }
 
-        // Iniciar el tutorial al cargar la página
         mostrar();
     </script>
 </body>

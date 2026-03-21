@@ -3,93 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Práctica 1: Mi primer código</title>
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="practica.css">
+    <title>Práctica - Tutorial C</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        .guia-rapida {
-            background-color: #f0f7ff;
-            border-left: 5px solid #2196f3;
-            padding: 15px;
-            margin-bottom: 20px;
-            text-align: left;
-            font-size: 0.9em;
-            border-radius: 8px;
-        }
-        textarea {
+        /* Estilo para el área de escritura tipo editor */
+        #userCode {
             width: 100%;
             height: 150px;
-            font-family: 'Consolas', monospace;
-            padding: 10px;
-            border-radius: 10px;
-            border: 2px solid #ddd;
-            margin-top: 10px;
+            background: #ffffff;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            box-sizing: border-box;
             resize: none;
+            outline: none;
+            margin-top: 10px;
+            color: #333;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
         }
-        .resultado {
+
+        #userCode:focus {
+            border-color: #5d5dff;
+        }
+
+        /* Contenedor de feedback para los mensajes de error/éxito */
+        .feedback {
             margin-top: 15px;
-            padding: 10px;
-            border-radius: 8px;
-            display: none;
             font-weight: bold;
+            min-height: 24px;
+            text-align: center;
         }
-        .success { background-color: #c2f0c2; color: #1e5631; display: block; }
-        .error { background-color: #ffd8a8; color: #874100; display: block; }
+
+        /* Estilo para resaltar la estructura sugerida como en tu foto */
+        .hint-box {
+            background: #f8f9fa;
+            border-left: 5px solid #333;
+            padding: 10px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
-
     <div class="card-container">
-        <div class="badge-practica">Nivel 1: Salida de Datos</div>
-        <h2>¡Haz que el computador hable!</h2>
-
-        <div class="guia-rapida">
-            <strong>💡 Refresca tu memoria:</strong><br>
-            Todo programa en C necesita: <br>
-            <code>#include &lt;stdio.h&gt;</code> (La librería)<br>
-            <code>int main() { ... }</code> (El cuerpo)<br>
-            <code>printf("Texto");</code> (Para mostrar mensajes)
+        <div style="text-align: center;">
+            <div class="btn lvl-2" style="display:inline-block; margin-bottom:15px; padding: 5px 15px;">Reto: Salida de Datos</div>
         </div>
 
-        <p><strong>RETO:</strong> Escribe el código necesario para mostrar en pantalla el mensaje: <br> 
-           <code style="background:#eee; padding:2px 5px;">Hola Mundo</code></p>
+        <h3>¡Haz que el computador hable!</h3>
+        
+        <div class="hint-box">
+            <strong>📍 Estructura básica:</strong><br>
+            <code>#include &lt;stdio.h&gt; <br> int main() { printf("Hola Mundo"); return 0; }</code>
+        </div>
+        
+        <p>Escribe el código para mostrar: <strong>Hola Mundo</strong></p>
 
         <textarea id="userCode" placeholder="Escribe tu código aquí..."></textarea>
 
-        <div id="feedback" class="resultado"></div>
+        <div id="feedbackArea" class="feedback"></div>
 
         <div style="display: flex; gap: 10px; margin-top: 20px; justify-content: center;">
-            <a href="practica.html" class="btn btn-prev">Volver</a>
-            <button class="btn btn-next" onclick="verificarCodigo()">Verificar Código</button>
+            <button class="btn btn-prev" onclick="window.history.back()">Volver</button>
+            <button id="verifyBtn" class="btn btn-next" onclick="verificarCodigo()">Verificar</button>
         </div>
     </div>
 
     <script>
         function verificarCodigo() {
-            const code = document.getElementById("userCode").value.trim();
-            const feedback = document.getElementById("feedback");
-
-            // Limpiamos espacios y saltos de línea para comparar más fácil
-            const simplifiedCode = code.replace(/\s+/g, '');
+            const entrada = document.getElementById("userCode").value;
+            const feedback = document.getElementById("feedbackArea");
             
-            // La respuesta correcta simplificada para comparar
-            const correctSolution = '#include<stdio.h>intmain(){printf("HolaMundo");return0;}';
+            // Limpieza de espacios para una comparación justa
+            const codigoLimpio = entrada.replace(/\s+/g, '').trim();
+            
+            // La respuesta correcta "ideal" (sin espacios para comparar)
+            const respuestaCorrecta = '#include<stdio.h>intmain(){printf("HolaMundo");return0;}';
 
-            if (simplifiedCode === correctSolution) {
-                feedback.innerHTML = "¡EXCELENTE! 🎉 Lo has escrito perfectamente. Has asimilado la estructura básica.";
-                feedback.className = "resultado success";
+            if (codigoLimpio === respuestaCorrecta) {
+                feedback.innerHTML = "✅ ¡Excelente! Lo lograste perfectamente.";
+                feedback.style.color = "#28a745";
+                
+                // Cambiamos el botón para avanzar si lo deseas
+                const btn = document.getElementById("verifyBtn");
+                btn.innerText = "Siguiente Nivel";
+                btn.onclick = function() { window.location.href = "nivel3.html"; };
             } else {
-                // Pistas básicas si falla
-                if (!code.includes("printf")) {
-                    feedback.innerHTML = "❌ Te falta la función 'printf' para mostrar el mensaje.";
-                } else if (!code.includes(";")) {
-                    feedback.innerHTML = "❌ ¡Cuidado! Revisa si te faltó el punto y coma (;) al final de la instrucción.";
-                } else if (!code.includes("#include")) {
-                    feedback.innerHTML = "❌ Recuerda incluir la librería <stdio.h> al principio.";
+                // Mensajes de ayuda personalizados basados en tu diseño original
+                if (entrada.includes('printf') && !entrada.includes('"Hola Mundo"')) {
+                    feedback.innerHTML = "❌ Casi lo tienes. Revisa si escribiste bien 'Hola Mundo' entre comillas.";
+                } else if (!entrada.includes(';')) {
+                    feedback.innerHTML = "❌ Te falta un punto y coma (;) al final de la instrucción.";
+                } else if (!entrada.includes('#include')) {
+                    feedback.innerHTML = "❌ No olvides incluir la librería <stdio.h> al inicio.";
                 } else {
-                    feedback.innerHTML = "❌ Hay un error en la estructura. Revisa la guía rápida de arriba e inténtalo de nuevo.";
+                    feedback.innerHTML = "❌ Revisa la estructura. Asegúrate de que no falte ninguna llave { }.";
                 }
-                feedback.className = "resultado error";
+                feedback.style.color = "#d9534f";
             }
         }
     </script>

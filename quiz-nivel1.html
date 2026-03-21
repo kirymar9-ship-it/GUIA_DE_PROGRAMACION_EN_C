@@ -1,16 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Quiz Nivel 1</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Nivel 1</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Ajuste de proporciones para móvil y computadora */
+        .card-container {
+            width: 95%;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .option-btn {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            text-align: left;
+            padding: 12px;
+            font-size: 1rem;
+        }
+        h2 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 
 <body>
 
 <div class="card-container" id="quiz">
 
-<div class="lvl-1" style="display:inline-block; padding:5px 15px; border-radius:10px; font-weight:bold;">
+<div class="lvl-1" style="display:inline-block; padding:5px 15px; border-radius:10px; font-weight:bold; margin-bottom:15px;">
 Quiz 1
 </div>
 
@@ -185,7 +207,7 @@ document.getElementById("quiz").innerHTML = `
 <p>Errores: ${errores}</p>
 <p>Porcentaje: ${porc.toFixed(0)}%</p>
 <p><em>"${feedback}"</em></p>
-<a href="index.html" class="btn btn-next">Volver al Inicio</a>
+<a href="index.html" class="btn btn-next" style="display:block; text-align:center;">Volver al Inicio</a>
 `;
 
 }

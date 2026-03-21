@@ -1,9 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Quiz Nivel 2</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Nivel 2</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Ajuste para que las opciones no se amontonen en el móvil */
+        #quiz {
+            width: 95%;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+        .option-btn {
+            width: 100%;
+            margin-bottom: 10px;
+            text-align: left;
+            padding: 12px;
+        }
+    </style>
 </head>
 
 <body>
@@ -11,198 +26,160 @@
 <div class="card-container" id="quiz"></div>
 
 <script>
-
 let puntos = 0;
 let actual = 0;
 
+// Tu contenido original intacto
 const preguntas = [
-
-{
-pregunta: "¿Cuál es la función principal de una biblioteca como &ltstdio.h&gt?",
-opciones: [
-{texto:"Ejecutar el código automáticamente sin compilador", correcta:false},
-{texto:"Proporcionar funciones ya creadas como printf() y scanf()", correcta:true},
-{texto:"Guardar variables permanentemente en la RAM", correcta:false}
-]
-},
-
-{
-pregunta: "¿Qué indica el tipo de dato int al declarar una función como int main()?",
-opciones: [
-{texto:"Que devolverá un número entero", correcta:true},
-{texto:"Solo puede tener variables enteras", correcta:false},
-{texto:"El programa se ejecuta un número entero de veces", correcta:false}
-]
-},
-
-{
-pregunta: "¿Para qué sirve el símbolo & dentro de scanf(\"%d\", &numero);?",
-opciones: [
-{texto:"Indicar que el valor será decimal", correcta:false},
-{texto:"Imprimir el valor de la variable", correcta:false},
-{texto:"Indicar la dirección de memoria", correcta:true}
-]
-},
-
-{
-pregunta: "Si quieres guardar la altura de una persona (1.75), ¿qué variable usas?",
-opciones: [
-{texto:"int", correcta:false},
-{texto:"float", correcta:true},
-{texto:"char", correcta:false}
-]
-},
-
-{
-pregunta: "¿Cuál es el propósito de los comentarios // en el código?",
-opciones: [
-{texto:"Dar instrucciones al sistema operativo", correcta:false},
-{texto:"Escribir notas que el programa no ejecuta", correcta:true},
-{texto:"Corregir errores automáticamente", correcta:false}
-]
-},
-
-{
-pregunta: "En una estructura if - else ¿cuándo se ejecuta else?",
-opciones: [
-{texto:"Cuando inicia el programa", correcta:false},
-{texto:"Si el if es verdadero", correcta:false},
-{texto:"Si la condición anterior no se cumple", correcta:true}
-]
-},
-
-{
-pregunta: "¿Qué significa return 0;?",
-opciones: [
-{texto:"Reinicia el programa", correcta:false},
-{texto:"El programa terminó correctamente", correcta:true},
-{texto:"Las variables se borran", correcta:false}
-]
-},
-
-{
-pregunta: "¿Dónde se coloca generalmente #include <stdio.h>?",
-opciones: [
-{texto:"Al inicio del programa", correcta:true},
-{texto:"Dentro de main()", correcta:false},
-{texto:"Antes de cada printf()", correcta:false}
-]
-},
-
-{
-pregunta: "¿Qué tipo de dato guarda una sola letra como 'A'?",
-opciones: [
-{texto:"float", correcta:false},
-{texto:"int", correcta:false},
-{texto:"char", correcta:true}
-]
-},
-
-{
-pregunta: "¿Qué pasa si olvidas el ; al final de una sentencia?",
-opciones: [
-{texto:"El programa es más rápido", correcta:false},
-{texto:"El compilador marca error", correcta:true},
-{texto:"La variable se vuelve 0", correcta:false}
-]
-},
-
-{
-pregunta: "¿Cuál es la diferencia entre if y else if?",
-opciones: [
-{texto:"if inicia la evaluación y else if evalúa otra condición", correcta:true},
-{texto:"No hay diferencia", correcta:false},
-{texto:"else if cierra el programa", correcta:false}
-]
-},
-
-{
-pregunta: "¿Qué símbolo indica un número entero en scanf?",
-opciones: [
-{texto:"%f", correcta:false},
-{texto:"%d", correcta:true},
-{texto:"%c", correcta:false}
-]
-},
-
-{
-pregunta: "¿Qué representa una variable en la computadora?",
-opciones: [
-{texto:"Un archivo en el disco", correcta:false},
-{texto:"Un espacio de memoria para guardar datos", correcta:true},
-{texto:"Una función que imprime texto", correcta:false}
-]
-}
-
+    {
+        pregunta: "¿Cuál es la función principal de una biblioteca como &lt;stdio.h&gt;?",
+        opciones: [
+            {texto:"Ejecutar el código automáticamente sin compilador", correcta:false},
+            {texto:"Proporcionar funciones ya creadas como printf() y scanf()", correcta:true},
+            {texto:"Guardar variables permanentemente en la RAM", correcta:false}
+        ]
+    },
+    {
+        pregunta: "¿Qué indica el tipo de dato int al declarar una función como int main()?",
+        opciones: [
+            {texto:"Que devolverá un número entero", correcta:true},
+            {texto:"Solo puede tener variables enteras", correcta:false},
+            {texto:"El programa se ejecuta un número entero de veces", correcta:false}
+        ]
+    },
+    {
+        pregunta: "¿Para qué sirve el símbolo & dentro de scanf(\"%d\", &numero);?",
+        opciones: [
+            {texto:"Indicar que el valor será decimal", correcta:false},
+            {texto:"Imprimir el valor de la variable", correcta:false},
+            {texto:"Indicar la dirección de memoria", correcta:true}
+        ]
+    },
+    {
+        pregunta: "Si quieres guardar la altura de una persona (1.75), ¿qué variable usas?",
+        opciones: [
+            {texto:"int", correcta:false},
+            {texto:"float", correcta:true},
+            {texto:"char", correcta:false}
+        ]
+    },
+    {
+        pregunta: "¿Cuál es el propósito de los comentarios // en el código?",
+        opciones: [
+            {texto:"Dar instrucciones al sistema operativo", correcta:false},
+            {texto:"Escribir notas que el programa no ejecuta", correcta:true},
+            {texto:"Corregir errores automáticamente", correcta:false}
+        ]
+    },
+    {
+        pregunta: "En una estructura if - else ¿cuándo se ejecuta else?",
+        opciones: [
+            {texto:"Cuando inicia el programa", correcta:false},
+            {texto:"Si el if es verdadero", correcta:false},
+            {texto:"Si la condición anterior no se cumple", correcta:true}
+        ]
+    },
+    {
+        pregunta: "¿Qué significa return 0;?",
+        opciones: [
+            {texto:"Reinicia el programa", correcta:false},
+            {texto:"El programa terminó correctamente", correcta:true},
+            {texto:"Las variables se borran", correcta:false}
+        ]
+    },
+    {
+        pregunta: "¿Dónde se coloca generalmente #include <stdio.h>?",
+        opciones: [
+            {texto:"Al inicio del programa", correcta:true},
+            {texto:"Dentro de main()", correcta:false},
+            {texto:"Antes de cada printf()", correcta:false}
+        ]
+    },
+    {
+        pregunta: "¿Qué tipo de dato guarda una sola letra como 'A'?",
+        opciones: [
+            {texto:"float", correcta:false},
+            {texto:"int", correcta:false},
+            {texto:"char", correcta:true}
+        ]
+    },
+    {
+        pregunta: "¿Qué pasa si olvidas el ; al final de una sentencia?",
+        opciones: [
+            {texto:"El programa es más rápido", correcta:false},
+            {texto:"El compilador marca error", correcta:true},
+            {texto:"La variable se vuelve 0", correcta:false}
+        ]
+    },
+    {
+        pregunta: "¿Cuál es la diferencia entre if y else if?",
+        opciones: [
+            {texto:"if inicia la evaluación y else if evalúa otra condición", correcta:true},
+            {texto:"No hay diferencia", correcta:false},
+            {texto:"else if cierra el programa", correcta:false}
+        ]
+    },
+    {
+        pregunta: "¿Qué símbolo indica un número entero en scanf?",
+        opciones: [
+            {texto:"%f", correcta:false},
+            {texto:"%d", correcta:true},
+            {texto:"%c", correcta:false}
+        ]
+    },
+    {
+        pregunta: "¿Qué representa una variable en la computadora?",
+        opciones: [
+            {texto:"Un archivo en el disco", correcta:false},
+            {texto:"Un espacio de memoria para guardar datos", correcta:true},
+            {texto:"Una función que imprime texto", correcta:false}
+        ]
+    }
 ];
 
 function cargarPregunta(){
-
-let p = preguntas[actual];
-
-let html = `<h2>${p.pregunta}</h2>`;
-
-p.opciones.forEach(op => {
-
-html += `<button class="option-btn"
-onclick="responder(${op.correcta})">
-${op.texto}
-</button>`;
-
-});
-
-document.getElementById("quiz").innerHTML = html;
-
+    let p = preguntas[actual];
+    let html = `<h2>${p.pregunta}</h2>`;
+    p.opciones.forEach(op => {
+        html += `<button class="option-btn" onclick="responder(${op.correcta})">${op.texto}</button>`;
+    });
+    document.getElementById("quiz").innerHTML = html;
 }
 
 function responder(correcta){
-
-if(correcta) puntos++;
-
-actual++;
-
-if(actual < preguntas.length)
-cargarPregunta();
-else
-mostrarFinal();
-
+    if(correcta) puntos++;
+    actual++;
+    if(actual < preguntas.length) cargarPregunta();
+    else mostrarFinal();
 }
 
 function mostrarFinal(){
+    let total = preguntas.length;
+    let aciertos = puntos;
+    let errores = total - aciertos;
+    const porc = (aciertos / total) * 100;
+    let feedback = "";
 
-let total = preguntas.length;
-let aciertos = puntos;
-let errores = total - aciertos;
+    if(porc < 50)
+        feedback = "Tu capacidad de retención es deficiente, necesitas esforzarte más. ¡Repasa lo que fallaste!";
+    else if(porc < 75)
+        feedback = "Tu capacidad de retención es buena, pero repasar más te ayudará.";
+    else if(porc < 90)
+        feedback = "¡Excelente! Has retenido gran parte de la lección. Continúa con la siguiente lección.";
+    else
+        feedback = "¡Tu capacidad de retención es sobresaliente! Dominas el tema. Puedes avanzar a la siguiente clase";
 
-const porc = (aciertos / total) * 100;
-
-let feedback = "";
-
-if(porc < 50)
-feedback = "Tu capacidad de retención es deficiente, necesitas esforzarte más. ¡Repasa lo que fallaste!";
-
-else if(porc < 75)
-feedback = "Tu capacidad de retención es buena, pero repasar más te ayudará.";
-
-else if(porc < 90)
-feedback = "¡Excelente! Has retenido gran parte de la lección. Continúa con la siguiente lección.";
-
-else
-feedback = "¡Tu capacidad de retención es sobresaliente! Dominas el tema. Puedes avanzar a la siguiente clase";
-
-document.getElementById("quiz").innerHTML = `
-<h1>Resultado</h1>
-<p>Aciertos: ${aciertos}/${total}</p>
-<p>Errores: ${errores}</p>
-<p>Porcentaje: ${porc.toFixed(0)}%</p>
-<p><em>"${feedback}"</em></p>
-<a href="index.html" class="btn btn-next">Volver al Inicio</a>
-`;
-
+    document.getElementById("quiz").innerHTML = `
+        <h1>Resultado</h1>
+        <p>Aciertos: ${aciertos}/${total}</p>
+        <p>Errores: ${errores}</p>
+        <p>Porcentaje: ${porc.toFixed(0)}%</p>
+        <p><em>"${feedback}"</em></p>
+        <a href="index.html" class="btn btn-next" style="display:block; text-align:center; margin-top:20px;">Volver al Inicio</a>
+    `;
 }
 
 cargarPregunta();
-
 </script>
 </body>
 </html>
