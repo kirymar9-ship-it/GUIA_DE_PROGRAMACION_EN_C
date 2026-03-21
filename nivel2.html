@@ -6,6 +6,7 @@
     <title>Nivel 2 - Tutorial Algoritmos</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* Unificando estética con Nivel 1 */
         @media (max-width: 600px) {
             .card-container {
                 width: 95% !important;
@@ -16,19 +17,24 @@
         }
 
         pre {
-            background: #2d2d2d !important; /* Regresamos al fondo oscuro */
-            color: #ffffff !important; /* Letras blancas para visibilidad total */
+            background: #2d2d2d !important;
+            color: #ffffff !important;
             overflow-x: auto;
             width: 100%;
             margin: 15px 0;
             padding: 15px;
             border-radius: 8px;
+            /* Forzamos que todas las letras midan lo mismo */
+            font-size: 0.9rem; 
+            line-height: 1.4;
+            box-sizing: border-box;
         }
 
         code {
             display: block;
             width: 100%;
-            font-family: monospace;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap; /* Mantiene saltos de línea sin desbordar */
         }
     </style>
 </head>
@@ -44,14 +50,14 @@
 
     <script>
         const lecciones = [
-            { t: "1. ¿Qué es una biblioteca en C?", c: "En C, una biblioteca es un archivo que contiene funciones ya creadas que podemos usar en nuestros programas sin tener que escribirlas desde cero. <P> Por ejemplo, la biblioteca &lt;stdio.h&gt; permite usar funciones como printf() para mostrar texto y scanf() para leer datos.", e:"#include &lt;stdio.h&gt; <p> Se coloca al inicio del programa para que el compilador conozca las funciones que vamos a utilizar."},
+            { t: "1. ¿Qué es una biblioteca en C?", c: "En C, una biblioteca es un archivo que contiene funciones ya creadas que podemos usar en nuestros programas sin tener que escribirlas desde cero. <P> Por ejemplo, la biblioteca &lt;stdio.h&gt; permite usar funciones como printf() para mostrar texto y scanf() para leer datos.", e:"#include &lt;stdio.h&gt; \n\nSe coloca al inicio del programa para que el compilador conozca las funciones que vamos a utilizar."},
             { t: "2. La función principal: int main()", c: "&quot;main()&#34; es la función principal de un programa en C. La ejecución del programa siempre comienza aquí.<br> &quot;int&#34; indica que la función devolverá un número entero al finalizar.", e: "int main() {\n // Tu código aquí\n return 0;\n}" },
-            { t: "3. Variables", c: "Una variable es un espacio en la memoria de la computadora donde se guarda un dato que puede cambiar durante la ejecución del programa. <p>Cada variable tiene un tipo de dato, que indica qué tipo de información puede guardar. Los tipos más comunes son:<p>int → números enteros. Ej: int edad = 25; <p>float → Números con decimales. Ej: float altura = 1.75; <p>char para un solo carácter o símbolo. Ej: char grado = 'B';", e: "Ejemplo: Lista de Alumnos<br>Para registrar a un estudiante usamos:<br>1. int edad = 19;<br>2. float promedio = 9.75;<br>3. char seccion = 'A';<br><br>Cada dato tiene su tipo ideal según la necesidad." },
-            { t: "4. Entrada de datos: scanf()", c: "Para pedir datos al usuario utilizamos scanf(). Esta función lee información que el usuario escribe en el teclado. El %d indica que vamos a recibir un entero, y &numero es la dirección de memoria donde guardaremos el dato.", e: "printf(&quot;Ingresa un número:&#34;);<br>scanf(&quot;%d&#34;, &numero);<br>// %d = entero, &numero = dirección de memoria" },
-            { t: "5. Condicionales: if - else", c: "Una estructura que permite tomar decisiones según una condición. El if evalúa si una condición es verdadera, else if evalúa otra condición si la primera es falsa, y else ejecuta código si ninguna condición se cumple.", e: "if (numero > 0) {<br> printf(&quot;Positivo&#34;);<br>}<br>else if (numero < 0) {<br> printf(&quot;Negativo&#34;);<br>}else {<br> printf(&quot;Cero&#34;);<br>}" },
-            { t: "Finalización del programa: return 0;", c: "Indica al sistema operativo que el programa terminó correctamente y sin errores.", e: "return 0; <p>//Este valor se envía al sistema operativo para indicar que no hubo errores." },
+            { t: "3. Variables", c: "Una variable es un espacio en la memoria de la computadora donde se guarda un dato que puede cambiar durante la ejecución del programa. <p>Cada variable tiene un tipo de dato, que indica qué tipo de información puede guardar. Los tipos más comunes son:<p>int → números enteros. Ej: int edad = 25; <p>float → Números con decimales. Ej: float altura = 1.75; <p>char para un solo carácter o símbolo. Ej: char grado = 'B';", e: "Ejemplo: Lista de Alumnos\nPara registrar a un estudiante usamos:\n1. int edad = 19;\n2. float promedio = 9.75;\n3. char seccion = 'A';\n\nCada dato tiene su tipo ideal según la necesidad." },
+            { t: "4. Entrada de datos: scanf()", c: "Para pedir datos al usuario utilizamos scanf(). Esta función lee información que el usuario escribe en el teclado. El %d indica que vamos a recibir un entero, y &numero es la dirección de memoria donde guardaremos el dato.", e: "printf(\"Ingresa un número:\");\nscanf(\"%d\", &numero);\n// %d = entero, &numero = dirección de memoria" },
+            { t: "5. Condicionales: if - else", c: "Una estructura que permite tomar decisiones según una condición. El if evalúa si una condición es verdadera, else if evalúa otra condición si la primera es falsa, y else ejecuta código si ninguna condición se cumple.", e: "if (numero > 0) {\n printf(\"Positivo\");\n}\nelse if (numero < 0) {\n printf(\"Negativo\");\n}else {\n printf(\"Cero\");\n}" },
+            { t: "Finalización del programa: return 0;", c: "Indica al sistema operativo que el programa terminó correctamente y sin errores.", e: "return 0; \n\n//Este valor se envía al sistema operativo para indicar que no hubo errores." },
             { t: "Comentarios en C", c:"Los comentarios se usan para escribir notas dentro del código que el programa no ejecutará.", e:"Se escriben usando //."},
-            { t: "CÓDIGO COMPLETO", c: "Aquí tienes el algoritmo armado con todo lo aprendido:", e: "#include &lt;stdio.h&gt; //Incluye la librería estándar de entrada y salida. <p>int main() { <br> int numero; //Declaración de una variable entera para almacenar el valor.<p> //Solicita al usuario que ingrese un dato.<br> printf(&quot;Ingresa un número: &#34;); <p> //Lee el número ingresado por teclado y lo guarda en la variable ¨numero¨<br> scanf(&quot;%d&#34;, &numero);<p> //Estructura de control para decidir qué mensaje mostrar<br> if (numero &gt; 0) {<br> //Se ejecuta si el numero es mayor a cero<br> printf(&quot;El número es positivo.&#34;);<br> }<br> else if (numero &lt; 0) {<br> //Se ejecuta si el número es menor a cero<br> printf(&quot;El número es negativo.&#34;);<br> }<br> else {<br> //Se ejecuta si no es ni mayor ni menor a cero (es decir, es cero)<br> printf(&quot;El número es cero.&#34;);<br> }<p> return 0; //Indica que el programa finalizó correctamente<br>}"},
+            { t: "CÓDIGO COMPLETO", c: "Aquí tienes el algoritmo armado con todo lo aprendido: <p> //Lee los comentarios para repasar qué función cumple cada línea.", e: "#include &lt;stdio.h&gt; //Incluye la librería estándar de entrada y salida. \n\nint main() { \n int numero; //Declaración de una variable entera\n\n printf(\"Ingresa un número: \"); \n scanf(\"%d\", &numero);\n\n if (numero > 0) {\n printf(\"El número es positivo.\");\n }\n else if (numero < 0) {\n printf(\"El número es negativo.\");\n }\n else {\n printf(\"El número es cero.\");\n }\n\n return 0; //Finalización correcta\n}"},
         ];
 
         let i = 0;
@@ -76,4 +82,3 @@
     </script>
 </body>
 </html>
-
