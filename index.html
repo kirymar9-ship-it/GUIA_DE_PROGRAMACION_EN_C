@@ -6,38 +6,49 @@
     <title>Aprende C - Inicio</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .top-nav {
-            position: absolute;
-            top: 20px;
-            right: 20px;
+        /* Contenedor para alinear el botón a la derecha sin que flote sobre el contenido */
+        .nav-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            max-width: 500px; /* Ajustado al ancho de tu tarjeta */
+            margin: 0 auto 15px auto;
         }
-        /* Ajuste para que el botón de práctica no tape el título en móviles muy pequeños */
-        @media (max-width: 400px) {
-            .top-nav {
-                position: relative;
-                top: 0;
-                right: 0;
-                margin-bottom: 20px;
-                text-align: right;
-            }
-        }
+
         .btn-practica {
             background-color: #1A3A5F;
             color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
+            padding: 10px 18px;
+            border-radius: 25px;
             text-decoration: none;
             font-size: 0.85em;
             font-weight: bold;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-practica:hover {
+            background-color: #254e7a;
+            transform: translateY(-2px);
+        }
+
+        /* Ajustes para que la tarjeta y el botón se vean bien en móviles */
+        @media (max-width: 600px) {
+            .nav-wrapper {
+                max-width: 90%;
+                justify-content: center; /* En móviles se ve mejor centrado */
+            }
+            h1 { font-size: 1.4em !important; }
         }
     </style>
 </head>
 
 <body>
 
-<div class="top-nav">
+<div class="nav-wrapper">
     <a href="practica/practica.html" class="btn-practica">🚀 Modo Práctica</a>
 </div>
 
@@ -49,7 +60,7 @@
         Tu guía básica para iniciar en programación
     </p>
 
-    <div style="display:flex; flex-direction:column;">
+    <div style="display:flex; flex-direction:column; gap: 12px;">
         <a href="nivel1.html" class="btn lvl-btn lvl-1">Nivel 1: Fundamentos de C</a>
         <a href="nivel2.html" class="btn lvl-btn lvl-2">Nivel 2: Creación de Algoritmos</a>
         <button class="btn lvl-btn lvl-3" disabled>Nivel 3: Estructuras de Datos (Próximamente)</button>

@@ -13,16 +13,24 @@
             }
             h2 { font-size: 1.6rem; }
             p { font-size: 1.1rem; }
+
+            /* Ajuste para que la barra no desborde en móviles */
+            pre {
+                width: auto !important; 
+                margin: 15px 5px !important;
+                box-sizing: border-box;
+            }
         }
-        
+       
         pre {
-            background: #2d2d2d !important; /* Fondo oscuro para que se vean las letras */
+            background: #2d2d2d !important; /* Fondo oscuro */
             color: #ffffff !important; /* Letras blancas */
             overflow-x: auto;
             width: 100%;
             margin: 15px 0;
             padding: 15px;
             border-radius: 8px;
+            white-space: pre-wrap; /* Mantiene el formato pero permite saltos si es muy largo */
         }
         code {
             display: block;
@@ -50,7 +58,7 @@
             { t: "5. ¿Qué es el lenguaje C?", c: "El lenguaje C es un lenguaje de programación de propósito general ampliamente utilizado para desarrollar sistemas operativos, programas y software de alto rendimiento debido a su eficiencia y control sobre el hardware. <p> El lenguaje C fue creado en 1972 por Dennis Ritchie en los laboratorios Bell.", e:"Muchos lenguajes populares, como C++, Java y C#, están inspirados en el lenguaje C."},
             { t: "6. El primer programa en C", c: "Tradicionalmente, el primer programa que se aprende en cualquier lenguaje de programación es ´Hola, mundo´, ya que permite comprobar que el compilador funciona correctamente y que el programa puede ejecutarse.", e: "#include &lt;stdio.h&gt; <br> int main() { <br> printf(´Hola, mundo´/n); <b> return 0; <br>"},
             ];
-        
+       
         let idx = 0;
         function mostrar() {
             const item = datos[idx];
