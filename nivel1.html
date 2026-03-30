@@ -13,29 +13,24 @@
             }
             h2 { font-size: 1.6rem; }
             p { font-size: 1.1rem; }
-
-            /* Ajuste para que la barra no desborde en móviles */
-            pre {
-                width: auto !important; 
-                margin: 15px 5px !important;
-                box-sizing: border-box;
-            }
         }
        
         pre {
             background: #2d2d2d !important; /* Fondo oscuro */
-            color: #ffffff !important; /* Letras blancas */
-            overflow-x: auto;
-            width: 100%;
+            color: #ffffff !important;      /* Letras blancas */
+            overflow-x: auto;               /* Mantiene la barra deslizable */
+            width: 100%;                    /* Ocupa el ancho disponible */
             margin: 15px 0;
             padding: 15px;
             border-radius: 8px;
-            white-space: pre-wrap; /* Mantiene el formato pero permite saltos si es muy largo */
+            /* SOLUCIÓN AL DESBORDE: */
+            box-sizing: border-box;         /* Asegura que el padding no estire la barra fuera del borde */
         }
         code {
             display: block;
             width: 100%;
             font-family: monospace;
+            white-space: pre;               /* Preserva espacios y saltos de línea para que se pueda deslizar */
         }
     </style>
 </head>
