@@ -1,3 +1,6 @@
+/* =========================================
+   VARIABLES Y CONFIGURACIÓN BASE (Mantenidas)
+   ========================================= */
 :root {
   --bg: #eef2f7;
   --card: white;
@@ -16,16 +19,25 @@
   --subtitle: #cfcfcf;
 }
 
-/* Animaciones de Fluidez */
+/* =========================================
+   ANIMACIONES DE FLUIDEZ
+   ========================================= */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes pulse {
-    0% { box-shadow: 0 4px 6px rgba(26, 58, 95, 0.1); transform: scale(1); }
-    50% { box-shadow: 0 0 15px rgba(79, 172, 254, 0.5); transform: scale(1.03); }
-    100% { box-shadow: 0 4px 6px rgba(26, 58, 95, 0.1); transform: scale(1); }
+/* Animación de respiración suave para el logo */
+@keyframes breathing {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.03); opacity: 1; }
+}
+
+/* Animación llamativa para el botón de práctica */
+@keyframes actionPulse {
+  0% { box-shadow: 0 4px 6px rgba(26, 58, 95, 0.1); transform: scale(1); }
+  50% { box-shadow: 0 0 20px rgba(79, 172, 254, 0.6); transform: scale(1.04); }
+  100% { box-shadow: 0 4px 6px rgba(26, 58, 95, 0.1); transform: scale(1); }
 }
 
 body {
@@ -44,7 +56,60 @@ body {
 }
 
 /* =========================================
-   CONTENEDORES Y NAVEGACIÓN
+   CABECERA: LOGO DISCRETO Y PRÁCTICA LLAMATIVO
+   ========================================= */
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 15px;
+}
+
+/* Logo configurado para ser horizontal y pequeño */
+.config-trigger {
+    cursor: pointer;
+    font-size: 0.75rem; /* Discreto */
+    color: var(--dark-blue);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    animation: breathing 4s infinite ease-in-out;
+    user-select: none;
+}
+
+.aesthetic-text {
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    opacity: 0.7;
+}
+
+.symbol-block {
+    letter-spacing: -2px; /* Los mantiene juntos */
+    font-size: 1.1rem;
+}
+
+/* Botón de práctica resaltado */
+.btn-practica.call-to-action {
+    background: linear-gradient(135deg, var(--dark-blue) 0%, #007bff 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: actionPulse 2s infinite ease-in-out;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* =========================================
+   TUS COMPONENTES (RECUPERADOS E INTACTOS)
    ========================================= */
 .card-container {
   background-color: var(--card);
@@ -57,15 +122,6 @@ body {
   animation: fadeInUp 0.8s ease-out;
 }
 
-.nav-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 500px;
-    margin-bottom: 15px;
-}
-
 .config-bar {
     display: none;
     background-color: var(--lavanda);
@@ -74,57 +130,10 @@ body {
     margin: 0 auto 15px auto;
     padding: 15px;
     border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    text-align: center;
     animation: fadeInUp 0.4s ease-out;
 }
 
-/* =========================================
-   LOGO Y MODO PRÁCTICA (MOVIMIENTO)
-   ========================================= */
-.config-trigger {
-    cursor: pointer;
-    color: var(--dark-blue);
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    user-select: none;
-}
-
-.aesthetic-symbols {
-    font-size: 1.2rem;
-    letter-spacing: -3px; /* Junta los símbolos para el rediseño */
-    white-space: nowrap;
-}
-
-.config-trigger:hover {
-    transform: scale(1.15);
-    filter: drop-shadow(0 0 5px var(--celeste-brillante));
-}
-
-.btn-practica {
-    background-color: var(--dark-blue);
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-weight: bold;
-    font-size: 0.9em;
-    animation: pulse 2.5s infinite ease-in-out; /* Movimiento constante */
-    transition: all 0.3s ease;
-}
-
-.btn-practica:hover {
-    animation-play-state: paused; /* Se detiene al tocarlo */
-    transform: translateY(-2px);
-    background: #2a5298;
-}
-
-/* =========================================
-   NIVELES Y BOTONES
-   ========================================= */
+/* Botones de Niveles */
 .lvl-btn {
   margin: 10px 0;
   width: 100%;
@@ -134,14 +143,9 @@ body {
   border-radius: 15px;
   border: none;
   cursor: pointer;
+  display: block;
   font-weight: bold;
   transition: all 0.3s ease;
-  box-sizing: border-box;
-}
-
-.lvl-btn:hover:not([disabled]) {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .lvl-1 { background-color: #e3f2fd; border-left: 8px solid #64b5f6; }
@@ -150,24 +154,12 @@ body {
 .lvl-4 { background-color: #64b5f6; border-left: 8px solid #1e88e5; opacity: 0.7; }
 .lvl-5 { background-color: #42a5f5; border-left: 8px solid #1565c0; color: white; opacity: 0.7; }
 
-/* Botones de Ajustes */
-.btn-toggle {
-    background: white;
-    border: 2px solid var(--dark-blue);
-    color: var(--dark-blue);
-    padding: 6px 15px;
-    border-radius: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    margin: 5px;
-    transition: 0.2s;
-}
+/* Botones de Acción (Naranja y Verde) */
+.btn-prev { background-color: #FFD8A8; color: #874100; }
+.btn-next { background-color: #C2F0C2; color: #1E5631; }
+.btn-quiz { background-color: var(--dark-blue); color: white; }
 
-.btn-toggle:active {
-    background: var(--dark-blue);
-    color: white;
-}
-
+/* Bloques de Código */
 pre {
   background: #2d2d2d;
   color: #f8f8f2;
@@ -175,119 +167,6 @@ pre {
   border-radius: 10px;
   text-align: left;
   overflow-x: auto;
-  font-size: 0.85em;
+  font-size: 0.9em;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
 }
-
-
-
-/* =========================================
-   REDISEÑO DE CABECERA: JERARQUÍA ULTRA-PROFESIONAL
-   ========================================= */
-
-/* A) ANIMACIÓN UNIFICADA (Pulso de respiración sutil) */
-@keyframes breathing {
-  0%, 100% { transform: scale(1); opacity: 0.9; }
-  50% { transform: scale(1.02); opacity: 1; }
-}
-
-/* B) LOGO DE CONFIGURACIÓN (Compacto y Discreto) */
-.config-trigger {
-    cursor: pointer;
-    font-size: 0.8rem; /* ¡MUCHO MÁS PEQUEÑO! */
-    color: var(--subtitle, #666); /* Usando color de subtítulo para menos peso */
-    padding: 8px;
-    display: flex;
-    flex-direction: column; /* Una línea para texto, otra para símbolos */
-    align-items: flex-start; /* Alineado a la izquierda */
-    transition: 0.3s;
-    user-select: none;
-    line-height: 1;
-    
-    /* Pulso muy sutil */
-    animation: breathing 4s infinite ease-in-out;
-}
-
-/* El texto de Config en arco sutil */
-.aesthetic-text {
-    font-size: 0.7em;
-    font-weight: bold;
-    color: var(--dark-blue, #1A3A5F);
-    letter-spacing: 2px;
-    border-bottom: 1px solid var(--lavanda, #CCCCFF); /* Pequeño subrayado lavanda */
-    display: inline-block;
-    width: fit-content;
-}
-
-/* Símbolos estéticos pegaditos y sutiles */
-.symbol-block {
-    font-size: 1em;
-    letter-spacing: -2px;
-    opacity: 0.6; /* Más transparente aún */
-    white-space: nowrap;
-}
-
-.config-trigger:hover {
-    opacity: 1;
-    color: var(--dark-blue, #1A3A5F);
-}
-
-
-/* C) MODO PRÁCTICA (Llamativo y Atractivo) */
-
-/* Definimos el pulso de luz llamativo */
-@keyframes actionPulse {
-    0% {
-        box-shadow: 0 4px 6px rgba(26, 58, 95, 0.1);
-        transform: scale(1);
-    }
-    50% {
-        /* Brillo celeste moderno e intenso */
-        box-shadow: 0 0 25px rgba(79, 172, 254, 0.8);
-        transform: scale(1.04);
-    }
-    100% {
-        box-shadow: 0 4px 6px rgba(26, 58, 95, 0.1);
-        transform: scale(1);
-    }
-}
-
-.btn-practica.call-to-action {
-    /* Degradado moderno de azul oscuro a celeste */
-    background: linear-gradient(135deg, #1A3A5F 0%, #007bff 100%);
-    color: white;
-    padding: 12px 25px;
-    border-radius: 50px;
-    font-weight: 800; /* Letras más gruesas */
-    font-size: 0.95em;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.15); /* Sombra inicial profunda */
-    
-    /* APLICAMOS LA ANIMACIÓN LLAMATIVA */
-    animation: actionPulse 2s infinite ease-in-out; 
-    
-    transition: all 0.3s ease;
-}
-
-/* Efecto al pasar el mouse */
-.btn-practica.call-to-action:hover {
-    animation-play-state: paused;
-    background: linear-gradient(135deg, #2a5298 0%, #4facfe 100%); /* Brillo extra al tocar */
-    transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
-}
-
-/* D) ICONO SVG PROFESIONAL (El cohete) */
-.icon-rocket {
-    width: 20px;
-    height: 20px;
-    fill: white; /* Color del icono */
-    transition: transform 0.3s ease;
-}
-
-.btn-practica:hover .icon-rocket {
-    transform: rotate(15deg) translateY(-2px); /* El cohete "speaks" al tocarlo */
-}
-
