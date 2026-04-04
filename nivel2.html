@@ -65,11 +65,11 @@
             const userAlign = localStorage.getItem('userTextAlign') || 'left';
 
             const contentDiv = document.getElementById("content");
-            contentDiv.style.textAlign = userAlign; 
-
+            
+            // Título centrado y contenido con tamaño de letra uniforme (1.1rem)
             contentDiv.innerHTML = `
-                <h3>${l.t}</h3>
-                <div>${l.c}</div>
+                <h3 style="text-align: center !important; margin-bottom: 15px;">${l.t}</h3>
+                <div style="text-align: ${userAlign}; font-size: 1.1rem; line-height: 1.6;">${l.c}</div>
                 <pre><code>${l.e}</code></pre>
             `;
 

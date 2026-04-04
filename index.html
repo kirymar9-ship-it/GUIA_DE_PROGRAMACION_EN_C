@@ -9,7 +9,7 @@
         /* Contenedor principal para los botones superiores */
         .nav-wrapper {
             display: flex;
-            justify-content: space-between; /* Uno a cada lado */
+            justify-content: space-between;
             align-items: center;
             width: 100%;
             max-width: 500px;
@@ -31,19 +31,22 @@
             gap: 8px;
         }
 
-        /* Estilo del botón decorativo de configuración */
+        /* AJUSTE DEL ICONO PARA QUE NO SE VEA LINEAL */
         .config-trigger {
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             color: #1A3A5F;
-            padding: 8px;
+            padding: 5px;
             transition: 0.3s;
             user-select: none;
+            display: inline-block; /* Fundamental para que los símbolos no salten */
+            line-height: 1; /* Elimina interlineado extra */
+            letter-spacing: -1px; /* Junta un poco más los símbolos */
         }
 
-        .config-trigger:hover { transform: scale(1.1); }
+        .config-trigger:hover { transform: scale(1.15); }
 
-        /* Barra de ajustes color lavanda solicitado */
+        /* Barra de ajustes color lavanda */
         .config-bar {
             display: none;
             background-color: #CCCCFF;
@@ -53,6 +56,20 @@
             padding: 15px;
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        /* ESTILO DEL TÍTULO AESTHETIC CON DEGRADADO */
+        h1 {
+            font-size: 1.6em;
+            background: linear-gradient(135deg, #1A3A5F, #4facfe, #00f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: #1A3A5F;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+            margin-top: 20px;
+            margin-bottom: 5px;
+            font-weight: 800;
             text-align: center;
         }
 
@@ -72,31 +89,14 @@
                 max-width: 95%;
                 padding: 0 10px;
             }
-            h1 { font-size: 1.6em; /* Mantenemos el tamaño que tenías */
-    
-    /* EFECTO DEGRADADO EN EL TEXTO */
-    background: linear-gradient(135deg, #1A3A5F, #4facfe, #00f2fe);
-    -webkit-background-clip: text; /* Clip del fondo al texto (para Chrome/Safari) */
-    -webkit-text-fill-color: transparent; /* Hace el texto transparente para ver el fondo */
-    color: #1A3A5F; /* Color de respaldo para navegadores viejos */
-
-    /* SOMBRA SUAVE PARA PROFUNDIDAD */
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1); 
-    
-    margin-top: 20px;
-    margin-bottom: 5px;
-    font-weight: 800; /* Un poco más grueso */
-}
-
         }
     </style>
 </head>
 
 <body>
 
-    <div class="config-trigger" onclick="toggleConfig()">
-    ◍✧*⑅ᵕ˖♡◕ 🔧
-</div>
+    <div class="nav-wrapper">
+        <div class="config-trigger" onclick="toggleConfig()">◍✧*⑅ᵕ˖♡◕🔧</div>
         <a href="practica/practica.html" class="btn-practica">🚀 Modo Práctica</a>
     </div>
 
@@ -109,39 +109,34 @@
     </div>
 
     <div class="card-container">
-        <h1 style="color:#1A3A5F; font-size: 1.6em;">𓍢 Aprende Programación desde cero 𓍢</h1>
-        <p style="color:var(--subtitle); margin-bottom:30px;">
+        <h1>𓍢 Aprende Programación desde cero 𓍢</h1>
+        <p style="color:var(--subtitle, #666); margin-bottom:30px; text-align: center;">
             Tu guía básica para iniciar en programación
         </p>
 
         <div style="display:flex; flex-direction:column; gap: 12px;">
             <a href="nivel1.html" class="btn lvl-btn lvl-1">Nivel 1: Fundamentos de C</a>
             <a href="nivel2.html" class="btn lvl-btn lvl-2">Nivel 2: Creación de Algoritmos</a>
-            <button class="btn lvl-btn lvl-3" disabled>Nivel 3: Estructuras de Datos (Próximamente)</button>
-            <button class="btn lvl-btn lvl-4" disabled>Nivel 4: Gestión de Memoria (Próximamente)</button>
-            <button class="btn lvl-btn lvl-5" disabled>Nivel 5: Proyectos Finales (Próximamente)</button>
+            <button class="btn lvl-btn lvl-3" disabled style="opacity: 0.7;">Nivel 3: Estructuras de Datos (Próximamente)</button>
+            <button class="btn lvl-btn lvl-4" disabled style="opacity: 0.7;">Nivel 4: Gestión de Memoria (Próximamente)</button>
+            <button class="btn lvl-btn lvl-5" disabled style="opacity: 0.7;">Nivel 5: Proyectos Finales (Próximamente)</button>
         </div>
     </div>
 
     <script>
-        // Función para mostrar/ocultar la barra lavanda
         function toggleConfig() {
             const bar = document.getElementById('config-bar');
             bar.style.display = (bar.style.display === 'block') ? 'none' : 'block';
         }
 
-        // Función para guardar la preferencia y cerrar el menú
         function setAlign(type) {
             localStorage.setItem('userTextAlign', type);
-            console.log("Alineación guardada: " + type); 
-            
-            // Cerramos la barra automáticamente tras elegir
-            toggleConfig(); 
-            
-            // Opcional: un pequeño aviso visual para confirmar al usuario
-            alert("Preferencia guardada: " + (type === 'justify' ? 'Justificado' : 'Centrado'));
+            toggleConfig();
+            // Aviso discreto en consola para no interrumpir con alertas
+            console.log("Preferencia guardada: " + type);
         }
     </script>
 
 </body>
 </html>
+
