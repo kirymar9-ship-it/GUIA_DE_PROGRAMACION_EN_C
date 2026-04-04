@@ -54,16 +54,17 @@
         ];
        
         let idx = 0;
+
         function mostrar() {
             const item = datos[idx];
-            
-            // 1. LEER la memoria de configuración
             const userAlign = localStorage.getItem('userTextAlign') || 'left';
 
-            // 2. APLICAR la alineación dinámicamente al párrafo
-            document.getElementById("content").innerHTML = `
+            const contentDiv = document.getElementById("content");
+            contentDiv.style.textAlign = userAlign; 
+
+            contentDiv.innerHTML = `
                 <h2>${item.t}</h2>
-                <p style="text-align: ${userAlign}">${item.c}</p>
+                <div>${item.c}</div> 
                 <pre><code>${item.e}</code></pre>
             `;
 
@@ -76,6 +77,7 @@
                 document.getElementById("nextBtn").className = "btn btn-next";
             }
         }
+
         function cambiar(n) {
             idx += n;
             if(idx >= datos.length) window.location.href = "quiz-nivel1.html";

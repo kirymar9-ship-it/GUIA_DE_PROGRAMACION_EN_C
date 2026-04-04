@@ -59,16 +59,17 @@
         ];
 
         let i = 0;
+
         function render() {
             const l = lecciones[i];
-
-            // 1. LEER la configuración guardada
             const userAlign = localStorage.getItem('userTextAlign') || 'left';
 
-            // 2. APLICAR alineación al renderizar
-            document.getElementById("content").innerHTML = `
+            const contentDiv = document.getElementById("content");
+            contentDiv.style.textAlign = userAlign; 
+
+            contentDiv.innerHTML = `
                 <h3>${l.t}</h3>
-                <p style="text-align: ${userAlign}">${l.c}</p>
+                <div>${l.c}</div>
                 <pre><code>${l.e}</code></pre>
             `;
 
@@ -81,6 +82,7 @@
                 document.getElementById("nextBtn").className = "btn btn-next";
             }
         }
+
         function navegar(dir) {
             i += dir;
             if(i >= lecciones.length) window.location.href = "quiz-nivel2.html";
@@ -90,5 +92,4 @@
     </script>
 </body>
 </html>
-
 

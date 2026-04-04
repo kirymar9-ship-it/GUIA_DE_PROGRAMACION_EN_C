@@ -72,17 +72,31 @@
                 max-width: 95%;
                 padding: 0 10px;
             }
-            h1 { font-size: 1.4em !important; }
+            h1 { font-size: 1.6em; /* Mantenemos el tamaño que tenías */
+    
+    /* EFECTO DEGRADADO EN EL TEXTO */
+    background: linear-gradient(135deg, #1A3A5F, #4facfe, #00f2fe);
+    -webkit-background-clip: text; /* Clip del fondo al texto (para Chrome/Safari) */
+    -webkit-text-fill-color: transparent; /* Hace el texto transparente para ver el fondo */
+    color: #1A3A5F; /* Color de respaldo para navegadores viejos */
+
+    /* SOMBRA SUAVE PARA PROFUNDIDAD */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1); 
+    
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-weight: 800; /* Un poco más grueso */
+}
+
         }
     </style>
 </head>
 
 <body>
 
-    <div class="nav-wrapper">
-        <div class="config-trigger" onclick="toggleConfig()">
-            ◍✧*⑅ᵕ<p>˖♡◕ 🔧
-        </div>
+    <div class="config-trigger" onclick="toggleConfig()">
+    ◍✧*⑅ᵕ˖♡◕ 🔧
+</div>
         <a href="practica/practica.html" class="btn-practica">🚀 Modo Práctica</a>
     </div>
 
