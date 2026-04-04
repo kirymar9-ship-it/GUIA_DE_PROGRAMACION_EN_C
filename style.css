@@ -178,3 +178,116 @@ pre {
   font-size: 0.85em;
   box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
 }
+
+
+
+/* =========================================
+   REDISEÑO DE CABECERA: JERARQUÍA ULTRA-PROFESIONAL
+   ========================================= */
+
+/* A) ANIMACIÓN UNIFICADA (Pulso de respiración sutil) */
+@keyframes breathing {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.02); opacity: 1; }
+}
+
+/* B) LOGO DE CONFIGURACIÓN (Compacto y Discreto) */
+.config-trigger {
+    cursor: pointer;
+    font-size: 0.8rem; /* ¡MUCHO MÁS PEQUEÑO! */
+    color: var(--subtitle, #666); /* Usando color de subtítulo para menos peso */
+    padding: 8px;
+    display: flex;
+    flex-direction: column; /* Una línea para texto, otra para símbolos */
+    align-items: flex-start; /* Alineado a la izquierda */
+    transition: 0.3s;
+    user-select: none;
+    line-height: 1;
+    
+    /* Pulso muy sutil */
+    animation: breathing 4s infinite ease-in-out;
+}
+
+/* El texto de Config en arco sutil */
+.aesthetic-text {
+    font-size: 0.7em;
+    font-weight: bold;
+    color: var(--dark-blue, #1A3A5F);
+    letter-spacing: 2px;
+    border-bottom: 1px solid var(--lavanda, #CCCCFF); /* Pequeño subrayado lavanda */
+    display: inline-block;
+    width: fit-content;
+}
+
+/* Símbolos estéticos pegaditos y sutiles */
+.symbol-block {
+    font-size: 1em;
+    letter-spacing: -2px;
+    opacity: 0.6; /* Más transparente aún */
+    white-space: nowrap;
+}
+
+.config-trigger:hover {
+    opacity: 1;
+    color: var(--dark-blue, #1A3A5F);
+}
+
+
+/* C) MODO PRÁCTICA (Llamativo y Atractivo) */
+
+/* Definimos el pulso de luz llamativo */
+@keyframes actionPulse {
+    0% {
+        box-shadow: 0 4px 6px rgba(26, 58, 95, 0.1);
+        transform: scale(1);
+    }
+    50% {
+        /* Brillo celeste moderno e intenso */
+        box-shadow: 0 0 25px rgba(79, 172, 254, 0.8);
+        transform: scale(1.04);
+    }
+    100% {
+        box-shadow: 0 4px 6px rgba(26, 58, 95, 0.1);
+        transform: scale(1);
+    }
+}
+
+.btn-practica.call-to-action {
+    /* Degradado moderno de azul oscuro a celeste */
+    background: linear-gradient(135deg, #1A3A5F 0%, #007bff 100%);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 800; /* Letras más gruesas */
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15); /* Sombra inicial profunda */
+    
+    /* APLICAMOS LA ANIMACIÓN LLAMATIVA */
+    animation: actionPulse 2s infinite ease-in-out; 
+    
+    transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el mouse */
+.btn-practica.call-to-action:hover {
+    animation-play-state: paused;
+    background: linear-gradient(135deg, #2a5298 0%, #4facfe 100%); /* Brillo extra al tocar */
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+/* D) ICONO SVG PROFESIONAL (El cohete) */
+.icon-rocket {
+    width: 20px;
+    height: 20px;
+    fill: white; /* Color del icono */
+    transition: transform 0.3s ease;
+}
+
+.btn-practica:hover .icon-rocket {
+    transform: rotate(15deg) translateY(-2px); /* El cohete "speaks" al tocarlo */
+}
+

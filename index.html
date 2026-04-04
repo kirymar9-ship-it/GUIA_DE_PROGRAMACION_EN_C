@@ -5,102 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aprende C - Inicio</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Contenedor principal para los botones superiores */
-        .nav-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto 10px auto;
-        }
-
-        .btn-practica {
-            background-color: #1A3A5F;
-            color: white;
-            padding: 10px 18px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 0.85em;
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* AJUSTE DEL ICONO PARA QUE NO SE VEA LINEAL */
-        .config-trigger {
-            cursor: pointer;
-            font-size: 1.3rem;
-            color: #1A3A5F;
-            padding: 5px;
-            transition: 0.3s;
-            user-select: none;
-            display: inline-block; /* Fundamental para que los símbolos no salten */
-            line-height: 1; /* Elimina interlineado extra */
-            letter-spacing: -1px; /* Junta un poco más los símbolos */
-        }
-
-        .config-trigger:hover { transform: scale(1.15); }
-
-        /* Barra de ajustes color lavanda */
-        .config-bar {
-            display: none;
-            background-color: #CCCCFF;
-            width: 90%;
-            max-width: 450px;
-            margin: 0 auto 20px auto;
-            padding: 15px;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        /* ESTILO DEL TÍTULO AESTHETIC CON DEGRADADO */
-        h1 {
-            font-size: 1.6em;
-            background: linear-gradient(135deg, #1A3A5F, #4facfe, #00f2fe);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: #1A3A5F;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
-            margin-top: 20px;
-            margin-bottom: 5px;
-            font-weight: 800;
-            text-align: center;
-        }
-
-        .btn-toggle {
-            background: white;
-            border: 2px solid #1A3A5F;
-            color: #1A3A5F;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            margin: 0 5px;
-        }
-
-        @media (max-width: 600px) {
-            .nav-wrapper {
-                max-width: 95%;
-                padding: 0 10px;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
     <div class="nav-wrapper">
-    <div class="config-trigger" onclick="toggleConfig()">
-        <span class="aesthetic-symbols">◍✧*⑅ᵕ˖♡◕</span> 🔧
+        <div class="config-trigger" onclick="toggleConfig()">
+            <span class="aesthetic-text">◍✧*</span>
+            <span class="symbol-block">♡◕</span>⑅ᵕ˖ 🔧
+        </div>
+       
+        <a href="practica/practica.html" class="btn-practica call-to-action">
+            <svg class="icon-rocket" viewBox="0 0 512 512" width="20" height="20">
+                <path d="M504.971 133.029l-38.314-38.314c-9.373-9.373-24.569-9.373-33.941 0l-22.627 22.627-67.882-67.882-22.627 22.627c-9.373 9.373-9.373 24.569 0 33.941l38.314 38.314-22.627 22.627-67.882-67.882-22.627 22.627c-9.373 9.373-9.373 24.569 0 33.941l38.314 38.314-22.627 22.627c-9.373 9.373-24.569 9.373-33.941 0l-38.314-38.314-113.137 113.137c-9.373 9.373-9.373 24.569 0 33.941l38.314 38.314c9.373 9.373 24.569 9.373 33.941 0l113.137-113.137 38.314 38.314c9.373 9.373 24.569 9.373 33.941 0l22.627-22.627 67.882 67.882 22.627-22.627c9.373-9.373 9.373-24.569 0-33.941l-38.314-38.314 22.627-22.627 67.882 67.882 22.627-22.627c9.373-9.373 9.373-24.569 0-33.941l-38.314-38.314 22.627-22.627zM280.613 231.387l-22.627-22.627 33.941-33.941 22.627 22.627-33.941 33.941zM348.495 163.505l-22.627-22.627 33.941-33.941 22.627 22.627-33.941 33.941z"/>
+            </svg>
+            <span>🚀Modo Práctica</span>
+        </a>
     </div>
-    <a href="practica/practica.html" class="btn-practica">🚀 Modo Práctica</a>
-</div>
+
     <div id="config-bar" class="config-bar">
         <p style="margin-bottom: 10px; font-weight: bold; color: #1A3A5F; font-size: 0.9em;">Alineación del Texto:</p>
         <div style="display: flex; gap: 10px; justify-content: center;">
@@ -111,16 +33,16 @@
 
     <div class="card-container">
         <h1>𓍢 Aprende Programación desde cero 𓍢</h1>
-        <p style="color:var(--subtitle, #666); margin-bottom:30px; text-align: center;">
+        <p style="color: #666; margin-bottom:30px; text-align: center;">
             Tu guía básica para iniciar en programación
         </p>
 
         <div style="display:flex; flex-direction:column; gap: 12px;">
             <a href="nivel1.html" class="btn lvl-btn lvl-1">Nivel 1: Fundamentos de C</a>
             <a href="nivel2.html" class="btn lvl-btn lvl-2">Nivel 2: Creación de Algoritmos</a>
-            <button class="btn lvl-btn lvl-3" disabled style="opacity: 0.7;">Nivel 3: Estructuras de Datos (Próximamente)</button>
-            <button class="btn lvl-btn lvl-4" disabled style="opacity: 0.7;">Nivel 4: Gestión de Memoria (Próximamente)</button>
-            <button class="btn lvl-btn lvl-5" disabled style="opacity: 0.7;">Nivel 5: Proyectos Finales (Próximamente)</button>
+            <button class="btn lvl-btn lvl-3" disabled>Nivel 3: Estructuras de Datos (Próximamente)</button>
+            <button class="btn lvl-btn lvl-4" disabled>Nivel 4: Gestión de Memoria (Próximamente)</button>
+            <button class="btn lvl-btn lvl-5" disabled>Nivel 5: Proyectos Finales (Próximamente)</button>
         </div>
     </div>
 
@@ -132,8 +54,8 @@
 
         function setAlign(type) {
             localStorage.setItem('userTextAlign', type);
-            toggleConfig();
-            // Aviso discreto en consola para no interrumpir con alertas
+            const bar = document.getElementById('config-bar');
+            bar.style.display = 'none';
             console.log("Preferencia guardada: " + type);
         }
     </script>
