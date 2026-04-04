@@ -1,10 +1,12 @@
 :root {
-  /* Cambiado a un tono pastel pálido */
   --bg: #eef2f7;
   --card: white;
   --text: #333;
   --subtitle: #666;
-  --dark-blue: #1A3A5F; /* Variable para el azul oscuro que usas */
+  --dark-blue: #1A3A5F;
+  --lavanda: #CCCCFF;
+  --celeste-brillante: #4facfe;
+  --sombra: rgba(0, 0, 0, 0.08);
 }
 
 .dark-mode {
@@ -14,12 +16,23 @@
   --subtitle: #cfcfcf;
 }
 
-/* Configuración general */
+/* Animaciones de Fluidez */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 4px 6px rgba(26, 58, 95, 0.1); transform: scale(1); }
+    50% { box-shadow: 0 0 15px rgba(79, 172, 254, 0.5); transform: scale(1.03); }
+    100% { box-shadow: 0 4px 6px rgba(26, 58, 95, 0.1); transform: scale(1); }
+}
+
 body {
   background-color: var(--bg);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
-  flex-direction: column; /* Cambiado a column para que el menú aparezca arriba */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
@@ -27,8 +40,12 @@ body {
   padding: 15px;
   color: var(--text);
   box-sizing: border-box;
+  transition: background-color 0.4s ease;
 }
 
+/* =========================================
+   CONTENEDORES Y NAVEGACIÓN
+   ========================================= */
 .card-container {
   background-color: var(--card);
   width: 100%;
@@ -36,96 +53,22 @@ body {
   padding: 30px;
   border-radius: 25px;
   text-align: center;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-  box-sizing: border-box;
+  box-shadow: 0 15px 35px var(--sombra);
+  animation: fadeInUp 0.8s ease-out;
 }
 
-/* Botones base */
-.btn {
-  text-decoration: none;
-  padding: 12px 25px;
-  border-radius: 50px;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
-  display: inline-block;
-  font-size: 0.95em;
-  box-sizing: border-box;
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 15px;
 }
 
-.btn-prev { background-color: #FFD8A8; color: #874100; }
-.btn-next { background-color: #C2F0C2; color: #1E5631; }
-.btn-quiz { background-color: var(--dark-blue); color: white; }
-
-/* Niveles */
-.lvl-btn {
-  margin: 10px 0;
-  width: 100%;
-  color: #333;
-  text-align: left;
-  padding: 15px 25px;
-}
-
-.lvl-1 { background-color: #e3f2fd; border-left: 8px solid #64b5f6; }
-.lvl-2 { background-color: #bbdefb; border-left: 8px solid #42a5f5; }
-.lvl-3 { background-color: #90caf9; border-left: 8px solid #2196f3; }
-.lvl-4 { background-color: #64b5f6; border-left: 8px solid #1e88e5; }
-.lvl-5 {
-    background-color: #42a5f5;
-    border-left: 8px solid #1565c0;
-    color: white;
-}
-
-/* Quiz y Código */
-.option-btn {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  border: 2px solid #eee;
-  border-radius: 12px;
-  background: white;
-  cursor: pointer;
-  font-size: 1em;
-  color: #333;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-pre {
-  background: #2d2d2d;
-  color: #f8f8f2;
-  padding: 15px;
-  border-radius: 10px;
-  text-align: left;
-  overflow-x: auto;
-  font-size: 0.9em;
-  box-sizing: border-box; /* Importante para que no desborde */
-}
-
-/* =========================================
-   NUEVOS ESTILOS: CONFIGURACIÓN AESTHETIC
-   ========================================= */
-
-/* Estilo del botón decorativo aesthetic */
-.config-trigger {
-    cursor: pointer;
-    font-size: 1.2rem;
-    color: var(--dark-blue);
-    padding: 10px;
-    text-align: center;
-    transition: 0.3s;
-    user-select: none;
-}
-
-.config-trigger:hover {
-    transform: scale(1.15);
-}
-
-/* Barra color lavanda solicitado (#CCCCFF) */
 .config-bar {
-    display: none; /* Se activa vía JS en index.html */
-    background-color: #CCCCFF;
+    display: none;
+    background-color: var(--lavanda);
     width: 90%;
     max-width: 400px;
     margin: 0 auto 15px auto;
@@ -133,9 +76,81 @@ pre {
     border-radius: 20px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     text-align: center;
+    animation: fadeInUp 0.4s ease-out;
 }
 
-/* Botones dentro de la barra de ajustes */
+/* =========================================
+   LOGO Y MODO PRÁCTICA (MOVIMIENTO)
+   ========================================= */
+.config-trigger {
+    cursor: pointer;
+    color: var(--dark-blue);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    user-select: none;
+}
+
+.aesthetic-symbols {
+    font-size: 1.2rem;
+    letter-spacing: -3px; /* Junta los símbolos para el rediseño */
+    white-space: nowrap;
+}
+
+.config-trigger:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 5px var(--celeste-brillante));
+}
+
+.btn-practica {
+    background-color: var(--dark-blue);
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.9em;
+    animation: pulse 2.5s infinite ease-in-out; /* Movimiento constante */
+    transition: all 0.3s ease;
+}
+
+.btn-practica:hover {
+    animation-play-state: paused; /* Se detiene al tocarlo */
+    transform: translateY(-2px);
+    background: #2a5298;
+}
+
+/* =========================================
+   NIVELES Y BOTONES
+   ========================================= */
+.lvl-btn {
+  margin: 10px 0;
+  width: 100%;
+  color: #333;
+  text-align: left;
+  padding: 15px 25px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.lvl-btn:hover:not([disabled]) {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.lvl-1 { background-color: #e3f2fd; border-left: 8px solid #64b5f6; }
+.lvl-2 { background-color: #bbdefb; border-left: 8px solid #42a5f5; }
+.lvl-3 { background-color: #90caf9; border-left: 8px solid #2196f3; opacity: 0.7; }
+.lvl-4 { background-color: #64b5f6; border-left: 8px solid #1e88e5; opacity: 0.7; }
+.lvl-5 { background-color: #42a5f5; border-left: 8px solid #1565c0; color: white; opacity: 0.7; }
+
+/* Botones de Ajustes */
 .btn-toggle {
     background: white;
     border: 2px solid var(--dark-blue);
@@ -148,12 +163,18 @@ pre {
     transition: 0.2s;
 }
 
-.btn-toggle:hover {
-    background: #f0f0ff;
-}
-
 .btn-toggle:active {
     background: var(--dark-blue);
     color: white;
 }
 
+pre {
+  background: #2d2d2d;
+  color: #f8f8f2;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: left;
+  overflow-x: auto;
+  font-size: 0.85em;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
