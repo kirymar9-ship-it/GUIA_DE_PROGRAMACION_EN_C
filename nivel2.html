@@ -6,7 +6,6 @@
     <title>Nivel 2 - Tutorial Algoritmos</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Unificando estética con Nivel 1 */
         @media (max-width: 600px) {
             .card-container {
                 width: 95% !important;
@@ -24,8 +23,7 @@
             margin: 15px 0;
             padding: 15px;
             border-radius: 8px;
-            /* Forzamos que todas las letras midan lo mismo */
-            font-size: 0.9rem; 
+            font-size: 0.9rem;
             line-height: 1.4;
             box-sizing: border-box;
         }
@@ -34,7 +32,7 @@
             display: block;
             width: 100%;
             font-family: 'Courier New', Courier, monospace;
-            white-space: pre-wrap; /* Mantiene saltos de línea sin desbordar */
+            white-space: pre-wrap;
         }
     </style>
 </head>
@@ -63,7 +61,17 @@
         let i = 0;
         function render() {
             const l = lecciones[i];
-            document.getElementById("content").innerHTML = `<h3>${l.t}</h3><p>${l.c}</p><pre><code>${l.e}</code></pre>`;
+
+            // 1. LEER la configuración guardada
+            const userAlign = localStorage.getItem('userTextAlign') || 'left';
+
+            // 2. APLICAR alineación al renderizar
+            document.getElementById("content").innerHTML = `
+                <h3>${l.t}</h3>
+                <p style="text-align: ${userAlign}">${l.c}</p>
+                <pre><code>${l.e}</code></pre>
+            `;
+
             document.getElementById("prevBtn").style.visibility = i === 0 ? "hidden" : "visible";
             if(i === lecciones.length - 1) {
                 document.getElementById("nextBtn").innerText = "Ir al Quiz";
@@ -82,3 +90,5 @@
     </script>
 </body>
 </html>
+
+

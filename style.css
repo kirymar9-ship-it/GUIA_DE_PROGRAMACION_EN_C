@@ -1,9 +1,10 @@
 :root {
   /* Cambiado a un tono pastel pálido */
-  --bg: #eef2f7; 
+  --bg: #eef2f7;
   --card: white;
   --text: #333;
   --subtitle: #666;
+  --dark-blue: #1A3A5F; /* Variable para el azul oscuro que usas */
 }
 
 .dark-mode {
@@ -18,27 +19,28 @@ body {
   background-color: var(--bg);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
+  flex-direction: column; /* Cambiado a column para que el menú aparezca arriba */
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   margin: 0;
-  padding: 15px; /* Añadido para que no pegue a los bordes en móvil */
+  padding: 15px;
   color: var(--text);
   box-sizing: border-box;
 }
 
 .card-container {
   background-color: var(--card);
-  width: 100%; /* Cambiado a 100% para mejor ajuste */
+  width: 100%;
   max-width: 500px;
   padding: 30px;
   border-radius: 25px;
   text-align: center;
   box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-  box-sizing: border-box; /* Asegura que el padding no sople el ancho */
+  box-sizing: border-box;
 }
 
-/* Botones */
+/* Botones base */
 .btn {
   text-decoration: none;
   padding: 12px 25px;
@@ -52,11 +54,9 @@ body {
   box-sizing: border-box;
 }
 
-/* ... (Tus estilos de botones btn-prev, btn-next, etc, se mantienen igual) ... */
-
 .btn-prev { background-color: #FFD8A8; color: #874100; }
 .btn-next { background-color: #C2F0C2; color: #1E5631; }
-.btn-quiz { background-color: #1A3A5F; color: white; }
+.btn-quiz { background-color: var(--dark-blue); color: white; }
 
 /* Niveles */
 .lvl-btn {
@@ -67,18 +67,17 @@ body {
   padding: 15px 25px;
 }
 
-/* Niveles individuales */
 .lvl-1 { background-color: #e3f2fd; border-left: 8px solid #64b5f6; }
 .lvl-2 { background-color: #bbdefb; border-left: 8px solid #42a5f5; }
 .lvl-3 { background-color: #90caf9; border-left: 8px solid #2196f3; }
 .lvl-4 { background-color: #64b5f6; border-left: 8px solid #1e88e5; }
-.lvl-5 { 
-    background-color: #42a5f5; 
-    border-left: 8px solid #1565c0; 
-    color: white; 
+.lvl-5 {
+    background-color: #42a5f5;
+    border-left: 8px solid #1565c0;
+    color: white;
 }
 
-/* Quiz y Código se mantienen igual */
+/* Quiz y Código */
 .option-btn {
   width: 100%;
   padding: 12px;
@@ -101,4 +100,60 @@ pre {
   text-align: left;
   overflow-x: auto;
   font-size: 0.9em;
+  box-sizing: border-box; /* Importante para que no desborde */
 }
+
+/* =========================================
+   NUEVOS ESTILOS: CONFIGURACIÓN AESTHETIC
+   ========================================= */
+
+/* Estilo del botón decorativo aesthetic */
+.config-trigger {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--dark-blue);
+    padding: 10px;
+    text-align: center;
+    transition: 0.3s;
+    user-select: none;
+}
+
+.config-trigger:hover {
+    transform: scale(1.15);
+}
+
+/* Barra color lavanda solicitado (#CCCCFF) */
+.config-bar {
+    display: none; /* Se activa vía JS en index.html */
+    background-color: #CCCCFF;
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto 15px auto;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* Botones dentro de la barra de ajustes */
+.btn-toggle {
+    background: white;
+    border: 2px solid var(--dark-blue);
+    color: var(--dark-blue);
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px;
+    transition: 0.2s;
+}
+
+.btn-toggle:hover {
+    background: #f0f0ff;
+}
+
+.btn-toggle:active {
+    background: var(--dark-blue);
+    color: white;
+}
+

@@ -16,21 +16,20 @@
         }
        
         pre {
-            background: #2d2d2d !important; /* Fondo oscuro */
-            color: #ffffff !important;      /* Letras blancas */
-            overflow-x: auto;               /* Mantiene la barra deslizable */
-            width: 100%;                    /* Ocupa el ancho disponible */
+            background: #2d2d2d !important;
+            color: #ffffff !important;
+            overflow-x: auto;
+            width: 100%;
             margin: 15px 0;
             padding: 15px;
             border-radius: 8px;
-            /* SOLUCIÓN AL DESBORDE: */
-            box-sizing: border-box;         /* Asegura que el padding no estire la barra fuera del borde */
+            box-sizing: border-box;
         }
         code {
             display: block;
             width: 100%;
             font-family: monospace;
-            white-space: pre;               /* Preserva espacios y saltos de línea para que se pueda deslizar */
+            white-space: pre;
         }
     </style>
 </head>
@@ -52,12 +51,22 @@
             { t: "4. ¿Qué es un algoritmo?", c: "Un algoritmo es un conjunto ordenado y finito de pasos que se siguen para resolver un problema o realizar una tarea específica.", e:"Los algoritmos existen desde antes de las computadoras; originalmente se utilizaban para resolver problemas matemáticos."},
             { t: "5. ¿Qué es el lenguaje C?", c: "El lenguaje C es un lenguaje de programación de propósito general ampliamente utilizado para desarrollar sistemas operativos, programas y software de alto rendimiento debido a su eficiencia y control sobre el hardware. <p> El lenguaje C fue creado en 1972 por Dennis Ritchie en los laboratorios Bell.", e:"Muchos lenguajes populares, como C++, Java y C#, están inspirados en el lenguaje C."},
             { t: "6. El primer programa en C", c: "Tradicionalmente, el primer programa que se aprende en cualquier lenguaje de programación es ´Hola, mundo´, ya que permite comprobar que el compilador funciona correctamente y que el programa puede ejecutarse.", e: "#include &lt;stdio.h&gt; <br> int main() { <br> printf(´Hola, mundo´/n); <b> return 0; <br>"},
-            ];
+        ];
        
         let idx = 0;
         function mostrar() {
             const item = datos[idx];
-            document.getElementById("content").innerHTML = `<h2>${item.t}</h2><p>${item.c}</p><pre><code>${item.e}</code></pre>`;
+            
+            // 1. LEER la memoria de configuración
+            const userAlign = localStorage.getItem('userTextAlign') || 'left';
+
+            // 2. APLICAR la alineación dinámicamente al párrafo
+            document.getElementById("content").innerHTML = `
+                <h2>${item.t}</h2>
+                <p style="text-align: ${userAlign}">${item.c}</p>
+                <pre><code>${item.e}</code></pre>
+            `;
+
             document.getElementById("prevBtn").style.visibility = idx === 0 ? "hidden" : "visible";
             if(idx === datos.length - 1) {
                 document.getElementById("nextBtn").innerText = "Ir al Quiz";
