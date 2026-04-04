@@ -8,14 +8,7 @@
   --celeste-brillante: #4facfe;
 }
 
-.dark-mode {
-  --bg: #1e1e1e;
-  --card: #2a2a2a;
-  --text: #f5f5f5;
-  --subtitle: #cfcfcf;
-}
-
-/* --- ANIMACIONES DE FLUIDEZ (AÑADIDAS) --- */
+/* 1. ANIMACIONES DE FLUIDEZ (Añadidas para que todo se mueva suave) */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -32,7 +25,7 @@
   100% { box-shadow: 0 4px 6px rgba(26, 58, 95, 0.1); transform: scale(1); }
 }
 
-/* --- CONFIGURACIÓN GENERAL (TUYA) --- */
+/* 2. CONFIGURACIÓN GENERAL (Respetando tu body original) */
 body {
   background-color: var(--bg);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -57,10 +50,10 @@ body {
   text-align: center;
   box-shadow: 0 15px 35px rgba(0,0,0,0.08);
   box-sizing: border-box;
-  animation: fadeInUp 0.8s ease-out; /* Fluidez al cargar */
+  animation: fadeInUp 0.8s ease-out; /* La entrada suave que querías */
 }
 
-/* --- BOTONES BASE (TUS COLORES ORIGINALES) --- */
+/* 3. TUS BOTONES DE NAVEGACIÓN (Recuperados al 100%) */
 .btn {
   text-decoration: none;
   padding: 12px 25px;
@@ -74,21 +67,21 @@ body {
   box-sizing: border-box;
 }
 
-.btn-prev { background-color: #FFD8A8; color: #874100; }
-.btn-next { background-color: #C2F0C2; color: #1E5631; }
+.btn-prev { background-color: #FFD8A8; color: #874100; } /* Naranja Pastel */
+.btn-next { background-color: #C2F0C2; color: #1E5631; } /* Verde Pastel */
 .btn-quiz { background-color: var(--dark-blue); color: white; }
 
-/* --- NIVELES (TUS COLORES ORIGINALES) --- */
+/* 4. TUS NIVELES (Recuperados con sus bordes y colores específicos) */
 .lvl-btn {
   margin: 10px 0;
   width: 100%;
   color: #333;
   text-align: left;
   padding: 15px 25px;
-  border-radius: 15px; /* Recuperado */
-  border: none; /* Recuperado */
-  display: block; /* Recuperado */
-  font-weight: bold; /* Recuperado */
+  border-radius: 15px;
+  border: none;
+  display: block;
+  font-weight: bold;
   transition: 0.3s;
 }
 
@@ -102,7 +95,7 @@ body {
     color: white;
 }
 
-/* --- QUIZ Y CÓDIGO (TUYO) --- */
+/* 5. QUIZ Y CÓDIGO (Recuperado el diseño del resultado y opciones) */
 .option-btn {
   width: 100%;
   padding: 12px;
@@ -127,10 +120,9 @@ pre {
   text-align: left;
   overflow-x: auto;
   font-size: 0.9em;
-  box-sizing: border-box;
 }
 
-/* --- NUEVA NAVEGACIÓN (INTEGRADA Y DISCRETA) --- */
+/* 6. NAVEGACIÓN SUPERIOR (Logo discreto + Botón Práctica PRO) */
 .nav-wrapper {
     display: flex;
     justify-content: space-between;
@@ -162,6 +154,7 @@ pre {
     opacity: 0.6; 
 }
 
+/* Botón Práctica llamativo con pulso */
 .btn-practica.call-to-action {
     background: linear-gradient(135deg, var(--dark-blue), #007bff);
     color: white;
@@ -176,7 +169,7 @@ pre {
     animation: actionPulse 2s infinite ease-in-out;
 }
 
-/* --- BARRA LAVANDA (TUYA) --- */
+/* 7. BARRA LAVANDA Y AJUSTES */
 .config-bar {
     display: none;
     background-color: var(--lavanda);
