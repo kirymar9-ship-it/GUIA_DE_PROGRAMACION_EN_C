@@ -37,6 +37,21 @@
     </style>
 </head>
 <body>
+    
+    <div class="nav-wrapper">
+        <div class="config-trigger" onclick="toggleConfig()">
+            <span class="aesthetic-text">◍✧*</span>
+            <span class="symbol-block">♡◕</span>⑅ᵕ˖ 🔧
+        </div>
+       
+        <a href="index.html" class="btn" style="background: var(--lavanda); color: var(--dark-blue); padding: 8px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 0.9em;">🏠 Inicio</a>
+    </div>
+
+    <div id="config-bar" class="config-bar">
+        <p style="font-weight: bold; margin-bottom: 10px; color: #1A3A5F; font-size: 0.9em;">Ajustes de Visualización</p>
+        <button class="btn-toggle" id="darkModeBtn">🌙 Modo Oscuro</button>
+    </div>
+
     <div class="card-container">
         <div id="badge" class="btn lvl-2" style="display:inline-block; margin-bottom:15px; padding: 5px 15px;">Nivel 2</div>
         <div id="content"></div>
@@ -47,6 +62,34 @@
     </div>
 
     <script>
+        // LÓGICA DE MODO OSCURO Y MENÚ
+        const darkModeBtn = document.getElementById('darkModeBtn');
+        const body = document.body;
+
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            if (darkModeBtn) darkModeBtn.textContent = '☀️ Modo Claro';
+        }
+
+        if (darkModeBtn) {
+            darkModeBtn.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                if (body.classList.contains('dark-mode')) {
+                    localStorage.setItem('theme', 'dark');
+                    darkModeBtn.textContent = '☀️ Modo Claro';
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    darkModeBtn.textContent = '🌙 Modo Oscuro';
+                }
+            });
+        }
+
+        function toggleConfig() {
+            const bar = document.getElementById('config-bar');
+            bar.style.display = (bar.style.display === 'block') ? 'none' : 'block';
+        }
+
+        // CÓDIGO ORIGINAL DE LECCIONES
         const lecciones = [
             { t: "1. ¿Qué es una biblioteca en C?", c: "En C, una biblioteca es un archivo que contiene funciones ya creadas que podemos usar en nuestros programas sin tener que escribirlas desde cero. <P> Por ejemplo, la biblioteca &lt;stdio.h&gt; permite usar funciones como printf() para mostrar texto y scanf() para leer datos.", e:"#include &lt;stdio.h&gt; \n\nSe coloca al inicio del programa para que el compilador conozca las funciones que vamos a utilizar."},
             { t: "2. La función principal: int main()", c: "&quot;main()&#34; es la función principal de un programa en C. La ejecución del programa siempre comienza aquí.<br> &quot;int&#34; indica que la función devolverá un número entero al finalizar.", e: "int main() {\n // Tu código aquí\n return 0;\n}" },
@@ -65,7 +108,7 @@
             const userAlign = localStorage.getItem('userTextAlign') || 'left';
 
             const contentDiv = document.getElementById("content");
-            
+           
             // Título centrado y contenido con tamaño de letra uniforme (1.1rem)
             contentDiv.innerHTML = `
                 <h3 style="text-align: center !important; margin-bottom: 15px;">${l.t}</h3>
@@ -92,4 +135,3 @@
     </script>
 </body>
 </html>
-
