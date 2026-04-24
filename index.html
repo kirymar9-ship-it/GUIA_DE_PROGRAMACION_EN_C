@@ -24,6 +24,11 @@
     </div>
 
     <div id="config-bar" class="config-bar">
+        <p style="font-weight: bold; margin-bottom: 10px; color: #1A3A5F; font-size: 0.9em;">Ajustes de Visualización</p>
+        <button class="btn-toggle" id="darkModeBtn">🌙 Modo Oscuro</button>
+        
+        <hr style="border: 0; height: 1px; background: rgba(26, 58, 95, 0.1); margin: 15px 0;">
+
         <p style="margin-bottom: 10px; font-weight: bold; color: #1A3A5F; font-size: 0.9em;">Alineación del Texto:</p>
         <div style="display: flex; gap: 10px; justify-content: center;">
             <button class="btn-toggle" onclick="setAlign('justify')">≡ Justificado</button>
@@ -33,7 +38,7 @@
 
     <div class="card-container">
         <h1>𓍢 Aprende Programación desde cero 𓍢</h1>
-        <p style="color: #666; margin-bottom:30px; text-align: center;">
+        <p style="color: #666; margin-bottom:40px; text-align: center;">
             Tu guía básica para iniciar en programación
         </p>
 
@@ -46,7 +51,7 @@
         </div>
     </div>
 
-    <script>
+    <script src="script.js"></script> <script>
         function toggleConfig() {
             const bar = document.getElementById('config-bar');
             bar.style.display = (bar.style.display === 'block') ? 'none' : 'block';
@@ -54,12 +59,11 @@
 
         function setAlign(type) {
             localStorage.setItem('userTextAlign', type);
-            const bar = document.getElementById('config-bar');
-            bar.style.display = 'none';
+            // Aplicar el alineado inmediatamente para probar
+            document.querySelector('.card-container p').style.textAlign = type;
             console.log("Preferencia guardada: " + type);
         }
     </script>
 
 </body>
 </html>
-

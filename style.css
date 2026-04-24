@@ -1,4 +1,5 @@
 :root {
+  /* MODO CLARO (Tus colores originales) */
   --bg: #eef2f7;
   --card: white;
   --text: #333;
@@ -6,6 +7,39 @@
   --dark-blue: #1A3A5F;
   --lavanda: #CCCCFF;
   --celeste-brillante: #4facfe;
+  
+  /* Colores de niveles en modo claro */
+  --lvl1-bg: #e3f2fd; --lvl1-border: #64b5f6;
+  --lvl2-bg: #bbdefb; --lvl2-border: #42a5f5;
+  --lvl3-bg: #90caf9; --lvl3-border: #2196f3;
+  --lvl4-bg: #64b5f6; --lvl4-border: #1e88e5;
+  --lvl5-bg: #42a5f5; --lvl5-border: #1565c0;
+  
+  /* Botones Navegación Claro */
+  --btn-prev-bg: #FFD8A8; --btn-prev-text: #874100;
+  --btn-next-bg: #C2F0C2; --btn-next-text: #1E5631;
+}
+
+body.dark-mode {
+  /* MODO OSCURO (Nuevos contrastes) */
+  --bg: #121212;
+  --card: #1e1e1e;
+  --text: #f5f5f5;
+  --subtitle: #cfcfcf;
+  --dark-blue: #4facfe; /* Azul brillante para resaltar */
+  --lavanda: #3a3a5e;
+  --celeste-brillante: #00f2fe;
+  
+  /* Colores de niveles en modo oscuro */
+  --lvl1-bg: #0d253f; --lvl1-border: #1e88e5;
+  --lvl2-bg: #153450; --lvl2-border: #1976d2;
+  --lvl3-bg: #1b4361; --lvl3-border: #1565c0;
+  --lvl4-bg: #1e3a5f; --lvl4-border: #1e88e5;
+  --lvl5-bg: #2c5282; --lvl5-border: #1565c0;
+
+  /* Botones Navegación Oscuro */
+  --btn-prev-bg: #5d4037; --btn-prev-text: #ffccbc;
+  --btn-next-bg: #1b5e20; --btn-next-text: #c8e6c9;
 }
 
 /* 1. ANIMACIONES DE FLUIDEZ */
@@ -33,6 +67,7 @@
 /* 2. CONFIGURACIÓN GENERAL */
 body {
   background-color: var(--bg);
+  color: var(--text);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   flex-direction: column;
@@ -41,9 +76,8 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 15px;
-  color: var(--text);
   box-sizing: border-box;
-  transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .card-container {
@@ -56,9 +90,10 @@ body {
   box-shadow: 0 15px 35px rgba(0,0,0,0.08);
   box-sizing: border-box;
   animation: fadeInUp 0.8s ease-out;
+  transition: background-color 0.4s ease;
 }
 
-/* --- TÍTULO FOSFORESCENTE CON DEGRADADO (RESUCITADO) --- */
+/* --- TÍTULO FOSFORESCENTE CON DEGRADADO --- */
 h1 {
     font-size: 1.9em;
     font-weight: 800;
@@ -66,11 +101,11 @@ h1 {
     margin-top: 20px;
     margin-bottom: 5px;
     line-height: 1.2;
-    background: linear-gradient(135deg, #1A3A5F, #4facfe, #00f2fe, #4facfe, #1A3A5F);
+    background: linear-gradient(135deg, var(--dark-blue), var(--celeste-brillante), #00f2fe, var(--celeste-brillante), var(--dark-blue));
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: #1A3A5F;
+    color: var(--dark-blue);
     text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
     animation: textGradientEffect 1.5s ease infinite alternate;
 }
@@ -89,18 +124,18 @@ h1 {
   box-sizing: border-box;
 }
 
-.btn-prev { background-color: #FFD8A8; color: #874100; }
-.btn-next { background-color: #C2F0C2; color: #1E5631; }
+.btn-prev { background-color: var(--btn-prev-bg); color: var(--btn-prev-text); }
+.btn-next { background-color: var(--btn-next-bg); color: var(--btn-next-text); }
 .btn-quiz { background-color: var(--dark-blue); color: white; }
 
 /* 4. NIVELES OVALADOS */
 .lvl-btn {
   margin: 12px 0;
   width: 100%;
-  color: #333;
+  color: var(--text);
   text-align: left;
   padding: 18px 30px;
-  border-radius: 50px; /* Ovalado perfecto */
+  border-radius: 50px; 
   border: none;
   display: block;
   font-weight: 700;
@@ -113,14 +148,14 @@ h1 {
     box-shadow: 0 8px 15px rgba(0,0,0,0.1);
 }
 
-.lvl-1 { background-color: #e3f2fd; border-left: 8px solid #64b5f6; }
-.lvl-2 { background-color: #bbdefb; border-left: 8px solid #42a5f5; }
-.lvl-3 { background-color: #90caf9; border-left: 8px solid #2196f3; }
-.lvl-4 { background-color: #64b5f6; border-left: 8px solid #1e88e5; }
+.lvl-1 { background-color: var(--lvl1-bg); border-left: 8px solid var(--lvl1-border); }
+.lvl-2 { background-color: var(--lvl2-bg); border-left: 8px solid var(--lvl2-border); }
+.lvl-3 { background-color: var(--lvl3-bg); border-left: 8px solid var(--lvl3-border); }
+.lvl-4 { background-color: var(--lvl4-bg); border-left: 8px solid var(--lvl4-border); }
 .lvl-5 {
-    background-color: #42a5f5;
-    border-left: 8px solid #1565c0;
-    color: white;
+    background-color: var(--lvl5-bg);
+    border-left: 8px solid var(--lvl5-border);
+    color: white; /* Se mantiene blanco por legibilidad */
 }
 
 .lvl-btn[disabled] {
@@ -137,15 +172,15 @@ h1 {
   margin: 8px 0;
   border: 2px solid #eee;
   border-radius: 12px;
-  background: white;
+  background: var(--card);
   cursor: pointer;
   font-size: 1em;
-  color: #333;
+  color: var(--text);
   outline: none;
   transition: 0.2s;
 }
 
-.option-btn:hover { border-color: var(--celeste-brillante); background: #f0faff; }
+.option-btn:hover { border-color: var(--celeste-brillante); background: rgba(79, 172, 254, 0.1); }
 
 pre {
   background: #2d2d2d;
@@ -172,7 +207,7 @@ pre {
     color: var(--dark-blue);
     padding: 10px;
     display: flex;
-    flex-direction: row; /* Forzado horizontal */
+    flex-direction: row; 
     align-items: center;
     gap: 8px;
     user-select: none;
@@ -190,7 +225,7 @@ pre {
 
 .config-trigger:hover {
     transform: scale(1.15);
-    filter: drop-shadow(0 0 5px #4facfe);
+    filter: drop-shadow(0 0 5px var(--celeste-brillante));
 }
 
 .btn-practica.call-to-action {
@@ -219,10 +254,11 @@ pre {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     text-align: center;
     animation: fadeInUp 0.4s ease-out;
+    transition: background-color 0.4s ease;
 }
 
 .btn-toggle {
-    background: white;
+    background: var(--card);
     border: 2px solid var(--dark-blue);
     color: var(--dark-blue);
     padding: 6px 15px;

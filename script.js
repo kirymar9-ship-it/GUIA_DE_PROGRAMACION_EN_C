@@ -1,3 +1,28 @@
+// -------- LÓGICA DE MODO OSCURO (PERSISTENCIA Y CAMBIO) --------
+const darkModeBtn = document.getElementById('darkModeBtn');
+const body = document.body;
+
+// 1. Revisar si el usuario ya tenía el modo oscuro activado antes
+if (localStorage.getItem('theme') === 'dark') {
+    body.classList.add('dark-mode');
+    if (darkModeBtn) darkModeBtn.textContent = '☀️ Modo Claro';
+}
+
+// 2. Evento para cambiar el modo (con validación de existencia del botón)
+if (darkModeBtn) {
+    darkModeBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+            darkModeBtn.textContent = '☀️ Modo Claro';
+        } else {
+            localStorage.setItem('theme', 'light');
+            darkModeBtn.textContent = '🌙 Modo Oscuro';
+        }
+    });
+}
+
 // -------- NAVEGACIÓN --------
 function irANivel(nivel) {
     window.location.href = "nivel" + nivel + ".html";
@@ -85,7 +110,7 @@ function mostrarPregunta() {
 
     quiz.innerHTML = `
         <h3>${p.pregunta}</h3>
-        ${p.opciones.map((op, i) => 
+        ${p.opciones.map((op, i) =>
             `<button onclick="responder(${i})">${op}</button>`
         ).join("<br><br>")}
     `;
